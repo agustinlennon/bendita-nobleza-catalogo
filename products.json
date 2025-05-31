@@ -48,5 +48,15 @@
     "img1": "taza_jesus.png",
     "img2": "",
     "img3": ""
+  },
+  {
+    "id": 6,
+    "categoria": "almohadon apego",
+    "nombre": "taza raton",
+    "descripcion": "",
+    "precio": 5000,
+    "img1": "taza_virgen.png",
+    "img2": "",
+    "img3": ""
   }
 ]
