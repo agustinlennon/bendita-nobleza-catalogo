@@ -78,5 +78,15 @@
     "img1": "taza_virgen.png",
     "img2": "taza_jesus.png",
     "img3": ""
+  },
+  {
+    "id": 9,
+    "categoria": "almohadon apego",
+    "nombre": "taza luna",
+    "descripcion": "",
+    "precio": 5000,
+    "img1": "taza_jesus.png",
+    "img2": "taza_virgen.png",
+    "img3": ""
   }
 ]
