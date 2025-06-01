@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "categoria": "almohadon apego",
+    "categoria": "mate",
     "nombre": "maria del carmen",
     "descripcion": "virgen",
     "precio": 6500,
@@ -11,8 +11,8 @@
   },
   {
     "id": 2,
-    "categoria": "mate",
-    "nombre": "taza jesus mates",
+    "categoria": "almohadon apego",
+    "nombre": "taza jesus",
     "descripcion": "lalala",
     "precio": 10500,
     "img1": "taza_jesus.png",
