@@ -25,8 +25,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     const categoria = catMap[filename] || '';
     const modelos   = all.filter(p => p.categoria.toLowerCase() === categoria);
 
+   console.log("filename", filename); // qué archivo toma
+console.log("categoria", categoria); // qué categoría busca
+console.log("all", all); // el array de productos cargado
+console.log("modelos filtrados", modelos); // lo que encuentra para esa categoría
+
+
     // 4️⃣ Inyecta cada producto dentro del contenedor .modelos
     const container = document.querySelector('.container .modelos');
+    
+console.log("container catálogo", container); // chequeá si encuentra el contenedor
+    
     container.innerHTML = '';
 
     modelos.forEach((m, idx) => {
