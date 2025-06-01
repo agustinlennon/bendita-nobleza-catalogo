@@ -78,5 +78,15 @@
     "img1": "taza_jesus.png",
     "img2": "taza_virgen.png",
     "img3": ""
+  },
+  {
+    "id": 10,
+    "categoria": "almohadones",
+    "nombre": "almohadon estrella",
+    "descripcion": "",
+    "precio": 5000,
+    "img1": "AlmohadonApego1.png",
+    "img2": "taza_virgen.png",
+    "img3": ""
   }
 ]
