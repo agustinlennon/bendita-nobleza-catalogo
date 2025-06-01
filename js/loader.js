@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       'indumentaria.html':   'indumentaria',
       'taza.html':     'taza',
       'mate.html':     'mate',
+      'mate':     'mate',
       'stickers.html':'stickers'
     };
 
