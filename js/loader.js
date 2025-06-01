@@ -2,7 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', async () => {
   // 📋 Sustituí esta URL por la que obtuviste al desplegar tu Apps Script como Web App
-  const JSON_URL = 'products.json'; // Ahora lee local, no desde raw.githubusercontent
+  const JSON_URL = 'data/products.json'; // Ahora lee local, no desde raw.githubusercontent
 
   try {
     // 1️⃣ Descarga el JSON que expone tu Sheet
