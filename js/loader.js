@@ -13,12 +13,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 2️⃣ Mapeo de nombre de archivo a la columna "categoria" que quieras filtrar
     const catMap = {
       'almohadon_apego.html': 'almohadon apego',
+        'almohadon_apego': 'almohadon apego',
       'almohadones.html':        'almohadones',
+       'almohadones':        'almohadones',
       'indumentaria.html':   'indumentaria',
+      'indumentaria':   'indumentaria',
       'taza.html':     'taza',
+      'taza':     'taza',
       'mate.html':     'mate',
       'mate':     'mate',
-      'stickers.html':'stickers'
+      'stickers.html':'stickers',
+      'stickers':'stickers'
     };
 
     // 3️⃣ Determina la categoría según el nombre del archivo actual
