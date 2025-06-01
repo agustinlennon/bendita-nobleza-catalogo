@@ -11,7 +11,7 @@
   },
   {
     "id": 2,
-    "categoria": "almohadon apego",
+    "categoria": "taza",
     "nombre": "taza jesus",
     "descripcion": "lalala",
     "precio": 10500,
@@ -82,6 +82,76 @@
   {
     "id": 10,
     "categoria": "almohadones",
+    "nombre": "almohadon estrella",
+    "descripcion": "",
+    "precio": 5000,
+    "img1": "AlmohadonApego1.png",
+    "img2": "taza_virgen.png",
+    "img3": ""
+  },
+  {
+    "id": 11,
+    "categoria": "mate",
+    "nombre": "taza luna",
+    "descripcion": "",
+    "precio": 5000,
+    "img1": "taza_jesus.png",
+    "img2": "taza_virgen.png",
+    "img3": ""
+  },
+  {
+    "id": 12,
+    "categoria": "mate",
+    "nombre": "almohadon estrella",
+    "descripcion": "",
+    "precio": 5000,
+    "img1": "AlmohadonApego1.png",
+    "img2": "taza_virgen.png",
+    "img3": ""
+  },
+  {
+    "id": 13,
+    "categoria": "stickers",
+    "nombre": "tacita rita",
+    "descripcion": "",
+    "precio": 3500,
+    "img1": "taza_virgen.png",
+    "img2": "taza_jesus.png",
+    "img3": ""
+  },
+  {
+    "id": 14,
+    "categoria": "stickers",
+    "nombre": "taza luna",
+    "descripcion": "",
+    "precio": 5000,
+    "img1": "taza_jesus.png",
+    "img2": "taza_virgen.png",
+    "img3": ""
+  },
+  {
+    "id": 15,
+    "categoria": "almohadones",
+    "nombre": "almohadon estrella",
+    "descripcion": "",
+    "precio": 5000,
+    "img1": "AlmohadonApego1.png",
+    "img2": "taza_virgen.png",
+    "img3": ""
+  },
+  {
+    "id": 16,
+    "categoria": "indumentaria",
+    "nombre": "taza luna",
+    "descripcion": "",
+    "precio": 5000,
+    "img1": "taza_jesus.png",
+    "img2": "taza_virgen.png",
+    "img3": ""
+  },
+  {
+    "id": 17,
+    "categoria": "indumentaria",
     "nombre": "almohadon estrella",
     "descripcion": "",
     "precio": 5000,
