@@ -58,5 +58,25 @@
     "img1": "taza_virgen.png",
     "img2": "",
     "img3": ""
+  },
+  {
+    "id": 7,
+    "categoria": "taza",
+    "nombre": "tazita rey",
+    "descripcion": "",
+    "precio": 3400,
+    "img1": "taza_jesus.png",
+    "img2": "taza_virgen.png",
+    "img3": ""
+  },
+  {
+    "id": 8,
+    "categoria": "taza",
+    "nombre": "tacita rita",
+    "descripcion": "",
+    "precio": 3500,
+    "img1": "taza_virgen.png",
+    "img2": "taza_jesus.png",
+    "img3": ""
   }
 ]
