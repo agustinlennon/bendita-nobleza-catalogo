@@ -12,12 +12,24 @@ body {
 .banner-slideshow img.active { opacity: 1; position: relative;}
 .slide-text {
   position: absolute;
-  bottom: -10%;
+  bottom: -5%;
   width: 100%;
   text-align: center;
   font-size: 1.5em;
   color: white;
   text-shadow: 0 0 10px rgba(0,0,0,0.7);
+}
+.banner-slideshow .slide-text { display: none; }
+
+.banner-slideshow img.active + .slide-text {
+  display: block;
+  /* Puedes poner aquí tu tipo de letra especial para el texto de Filipenses */
+}
+/* 2do texto del banner */
+.banner-slideshow .texto-filipenses {
+  font-family: 'Poppins', cursive, serif;
+  font-size: 1.2em;
+  color: #ffe0ed;
 }
 nav {
   background-color: #d3a8f3;
