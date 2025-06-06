@@ -2,6 +2,7 @@
   {
     "id": 1,
     "categoria": "mate",
+    "tipo": "madera",
     "nombre": "maria del carmen",
     "descripcion": "virgen",
     "precio": 6500,
@@ -12,6 +13,7 @@
   {
     "id": 2,
     "categoria": "taza",
+    "tipo": "ceramica",
     "nombre": "taza jesus",
     "descripcion": "lalala",
     "precio": 10500,
@@ -22,6 +24,7 @@
   {
     "id": 3,
     "categoria": "almohadon apego",
+    "tipo": "",
     "nombre": "virgen maria",
     "descripcion": "virgencita contenta",
     "precio": 8000,
@@ -32,6 +35,7 @@
   {
     "id": 5,
     "categoria": "almohadon apego",
+    "tipo": "",
     "nombre": "taza superman",
     "descripcion": "",
     "precio": 2500,
@@ -42,6 +46,7 @@
   {
     "id": 6,
     "categoria": "almohadon apego",
+    "tipo": "",
     "nombre": "taza raton",
     "descripcion": "",
     "precio": 5000,
@@ -52,6 +57,7 @@
   {
     "id": 7,
     "categoria": "taza",
+    "tipo": "",
     "nombre": "tazita rey",
     "descripcion": "tacita para un rey",
     "precio": 3400,
@@ -62,6 +68,7 @@
   {
     "id": 8,
     "categoria": "taza",
+    "tipo": "",
     "nombre": "tacita rita",
     "descripcion": "",
     "precio": 3500,
@@ -72,6 +79,7 @@
   {
     "id": 9,
     "categoria": "almohadon apego",
+    "tipo": "",
     "nombre": "taza luna",
     "descripcion": "",
     "precio": 5000,
@@ -82,6 +90,7 @@
   {
     "id": 10,
     "categoria": "almohadones",
+    "tipo": "",
     "nombre": "almohadon estrella",
     "descripcion": "",
     "precio": 5000,
@@ -92,6 +101,7 @@
   {
     "id": 11,
     "categoria": "mate",
+    "tipo": "",
     "nombre": "taza luna",
     "descripcion": "",
     "precio": 5000,
@@ -102,6 +112,7 @@
   {
     "id": 12,
     "categoria": "mate",
+    "tipo": "",
     "nombre": "almohadon estrella",
     "descripcion": "",
     "precio": 5000,
@@ -112,6 +123,7 @@
   {
     "id": 13,
     "categoria": "stickers",
+    "tipo": "",
     "nombre": "tacita rita",
     "descripcion": "",
     "precio": 3500,
@@ -122,6 +134,7 @@
   {
     "id": 14,
     "categoria": "stickers",
+    "tipo": "",
     "nombre": "taza luna",
     "descripcion": "",
     "precio": 5000,
@@ -132,6 +145,7 @@
   {
     "id": 10,
     "categoria": "almohadones",
+    "tipo": "",
     "nombre": "almohadon estrella",
     "descripcion": "",
     "precio": 5000,
@@ -142,6 +156,7 @@
   {
     "id": 16,
     "categoria": "indumentaria",
+    "tipo": "",
     "nombre": "taza luna",
     "descripcion": "",
     "precio": 5000,
@@ -152,6 +167,7 @@
   {
     "id": 17,
     "categoria": "indumentaria",
+    "tipo": "",
     "nombre": "almohada estrella",
     "descripcion": "",
     "precio": 5000,
