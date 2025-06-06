@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bendita Nobleza - Artículos Religiosos</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Si querés usar styles.css externo, agregá este link -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Si tenías estilos embebidos, déjalos aquí también -->
+    <style>
+        /* (tu CSS embebido, si lo tenías, va acá) */
+        /* ...puedes pegar aquí los estilos del archivo anterior o dejar el link a styles.css... */
+    </style>
+</head>
+
+
+<body>
+    <!-- NAVEGADOR FIJO EN LA PARTE SUPERIOR -->
+    <nav>
+        <a href="#home" class="logo page-link">Bendita Nobleza</a>
+        <div class="nav-center">
+            <ul class="nav-links">
+                <li class="nav-item"><a href="#home" class="page-link">Inicio</a></li>
+                <li class="nav-item">
+                    <span>Catálogo</span>
+                    <ul class="dropdown" id="category-dropdown"></ul>
+                </li>
+                <li class="nav-item">
+                    <span>Contacto</span>
+                    <ul class="dropdown">
+                        <li><a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+                        <li><a href="https://instagram.com/TUUSUARIO" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="https://facebook.com/TUUSUARIO" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="https://t.me/TUUSUARIO" target="_blank"><i class="fab fa-telegram"></i> Telegram</a></li>
+                        <li><a href="mailto:TUEMAIL@gmail.com"><i class="far fa-envelope"></i> Gmail</a></li>
+                        <li><a href="https://pinterest.com/TUUSUARIO" target="_blank"><i class="fab fa-pinterest"></i> Pinterest</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <form class="search-container" id="search-form">
+            <input type="search" id="search-input" placeholder="Buscar productos...">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+    </nav>
+
+    <!-- SLIDER DE IMÁGENES EN LA PORTADA -->
+    <header class="slider-container" id="main-slider">
+        <!-- Slides serán generados dinámicamente desde slider.json -->
+        <div id="slider-dynamic"></div>
+        <div class="main-slider-dots" id="main-slider-dots-container"></div>
+    </header>
+
+    <main id="main-content">
+        <section id="home-page" class="page"></section>
+        <section id="catalog-page" class="page">
+            <h2 id="catalog-title">Catálogo</h2>
+            <div class="content-wrapper">
+                <aside class="filters" id="filters-aside">
+                    <div class="filter-group">
+                        <h4>Filtrar por Tipo</h4>
+                        <div id="type-filters"></div>
+                    </div>
+                    <div class="filter-group">
+                        <h4>Rango de Precio</h4>
+                        <input type="range" id="price-range" min="0" max="10000" step="100">
+                        <div id="price-value">$0 - $10000</div>
+                    </div>
+                </aside>
+                <div class="products-area">
+                    <div id="products-grid"></div>
+                </div>
+            </div>
+        </section>
+        <section id="product-detail-page" class="page"></section>
+    </main>
+
+    <!-- FOOTER Y MODALES (idénticos a tu HTML original) -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>Bendita Nobleza</h4>
+                <p>Conectando tu fe con diseños únicos y llenos de amor.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Contacto</h4>
+                <p><i class="fas fa-phone"></i> <a href="tel:TUNUMERO">TU NÚMERO DE TELÉFONO</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:TUEMAIL@gmail.com">TUEMAIL@gmail.com</a></p>
+            </div>
+            <div class="footer-column">
+                <h4>Síguenos</h4>
+                <div class="social-links">
+                    <a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://instagram.com/TUUSUARIO" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://facebook.com/TUUSUARIO" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="https://pinterest.com/TUUSUARIO" target="_blank" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Bendita Nobleza. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <!-- MODAL LIGHTBOX PARA ZOOM DE IMAGEN -->
+    <div id="lightbox-modal" class="lightbox-modal">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-content">
+            <img src="" id="lightbox-image" alt="Vista ampliada del producto">
+        </div>
+    </div>
+    <!-- BOTONES FLOTANTES, PANEL DE CARRITO Y MODAL CHECKOUT -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank" class="float-btn" id="whatsapp-btn"><i class="fab fa-whatsapp"></i></a>
+        <button id="cart-btn" class="float-btn"><i class="fas fa-shopping-cart"></i><span id="cart-count">0</span></button>
+    </div>
+    <aside class="cart-panel" id="cart-panel">
+        <div class="cart-header">
+            <h3>Mi Carrito</h3><button id="close-cart-btn">&times;</button>
+        </div>
+        <div class="cart-body">
+             <div id="cart-items-container"></div><p id="cart-empty-msg">Tu carrito está vacío.</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total"><span>Total:</span><span id="cart-total-price">$0</span></div>
+            <button id="checkout-btn">Enviar Carrito por WhatsApp</button>
+        </div>
+    </aside>
+    <div class="modal-overlay" id="checkout-modal">
+        <div class="modal-content">
+            <h3>Completa tus datos para continuar</h3>
+            <form id="checkout-form">
+                <input type="text" id="customer-name" placeholder="Tu Nombre Completo" required>
+                <input type="text" id="customer-address" placeholder="Dirección de envío (Opcional)">
+                <div class="modal-buttons">
+                    <button type="button" id="cancel-checkout">Cancelar</button><button type="submit" id="confirm-checkout">Confirmar y Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ======================= -->
+    <!--     SCRIPT PRINCIPAL    -->
+    <!-- ======================= -->
+    <script>
+    // ================== CONFIGURACIÓN DE RUTAS ==================
+    const PRODUCTS_JSON_PATH = 'products.json';
+    const CATALOGO_JSON_PATH = 'catalogo.json';
+    const SLIDER_JSON_PATH   = 'slider.json';
+    const SLIDER_IMG_PATH    = 'img/sliders/';
+    const PRODUCT_IMG_PATH   = 'img/productos/';
+    const WHATSAPP_NUMBER    = 'TUNUMERODEWHATSAPP';
+
+    // ================== ESTADO GLOBAL ==================
+    let allProducts = [];
+    let allCatalogos = [];
+    let allSliders = [];
+    let cart = JSON.parse(localStorage.getItem('benditaNoblezaCart')) || [];
+    let mainSliderInterval;
+
+    // ================== CARGA DE JSON ==================
+   
+
+
+   
+    async function fetchJSON(path) {
+        const res = await fetch(path);
+        if (!res.ok) throw new Error(`No se pudo cargar ${path}`);
+        return await res.json();
+    }
+
+    // ========== ARRANQUE ==========
+    document.addEventListener('DOMContentLoaded', async () => {
+        try {
+            // CARGA DE PRODUCTOS Y SLIDERS DESDE ARCHIVOS EXTERNOS
+            allProducts = await fetchJSON(PRODUCTS_JSON_PATH);
+            allCatalogos = await fetchJSON(CATALOGO_JSON_PATH);
+            allSliders  = await fetchJSON(SLIDER_JSON_PATH);
+            init();
+        } catch (e) {
+            alert("Error cargando archivos JSON: " + e.message);
+        }
+    });
+
+    // ========== FUNCIÓN DE INICIALIZACIÓN ==========
+    function init() {
+        setupRouting();
+        setupEventListeners();
+        populateCategories();
+        updateCart();
+        handleRouteChange();
+    }
+
+    // ========== SLIDER DINÁMICO ==========
+    function renderMainSlider() {
+        const sliderContainer = document.getElementById('slider-dynamic');
+        if (!sliderContainer) return;
+        sliderContainer.innerHTML = allSliders.map((s, idx) => `
+            <div class="slide${idx === 0 ? ' active' : ''}">
+                <img src="${SLIDER_IMG_PATH + s.imagen}" alt="Slider ${idx + 1}">
+            </div>
+        `).join('');
+        renderSliderDots();
+        startMainSlider();
+    }
+    function renderSliderDots() {
+        const dotsContainer = document.getElementById('main-slider-dots-container');
+        if (!dotsContainer) return;
+        dotsContainer.innerHTML = allSliders.map((_, idx) =>
+            `<span class="dot${idx === 0 ? ' active' : ''}" data-slide="${idx}"></span>`
+        ).join('');
+    }
+    function startMainSlider() {
+        const slides = document.querySelectorAll('#slider-dynamic .slide');
+        const dots  = document.querySelectorAll('#main-slider-dots-container .dot');
+        let currentSlide = 0;
+        function goToSlide(index) {
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            currentSlide = index;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+        dots.forEach(dot => dot.addEventListener('click', () => {
+            if(mainSliderInterval) clearInterval(mainSliderInterval);
+            goToSlide(Number(dot.dataset.slide));
+        }));
+        if(mainSliderInterval) clearInterval(mainSliderInterval);
+        mainSliderInterval = setInterval(() => {
+            goToSlide((currentSlide + 1) % slides.length);
+        }, 5000);
+    }
+
+    // ========== ROUTING Y PÁGINAS ==========
+    function setupRouting() {
+        window.addEventListener('hashchange', handleRouteChange);
+        document.body.addEventListener('click', e => {
+            const link = e.target.closest('.page-link');
+            if (link) {
+                e.preventDefault();
+                const targetHash = new URL(link.href, window.location.href).hash;
+                if (window.location.hash !== targetHash) window.location.hash = targetHash;
+                else handleRouteChange();
+            }
+        });
+    }
+    function handleRouteChange() {
+        const hash = window.location.hash || '#home';
+        const [path, param] = hash.substring(1).split('/');
+        document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+        document.getElementById('main-slider').style.display = 'none';
+        if(mainSliderInterval) clearInterval(mainSliderInterval);
+        switch (path) {
+            case 'home':
+                document.getElementById('home-page').classList.add('active');
+                document.getElementById('main-slider').style.display = 'block';
+                renderHomePage();
+                renderMainSlider();
+                break;
+            case 'catalog':
+                document.getElementById('catalog-page').classList.add('active');
+                renderCatalogPage({ category: decodeURIComponent(param || '') });
+                break;
+            case 'search':
+                document.getElementById('catalog-page').classList.add('active');
+                renderCatalogPage({ searchQuery: decodeURIComponent(param || '') });
+                break;
+            case 'product':
+                document.getElementById('product-detail-page').classList.add('active');
+                renderProductDetailPage(parseInt(param));
+                break;
+            default:
+                window.location.hash = '#home';
+        }
+        window.scrollTo(0, 0);
+    }
+
+    // ========== CATEGORÍAS Y HOME ==========
+    function getUniqueCategories() {
+        const cats = [...new Set(allProducts.map(p => p.categoria))];
+        return cats.map(name => ({ name: name.charAt(0).toUpperCase() + name.slice(1) }));
+    }
+   function populateCategories() {
+  document.getElementById('category-dropdown').innerHTML = allCatalogos.map(cat =>
+    `<li><a href="#catalog/${cat.categoria}" class="page-link">${cat.categoria.charAt(0).toUpperCase() + cat.categoria.slice(1)}</a></li>`
+  ).join('');
+}
+
+function renderHomePage() {
+  const homePage = document.getElementById('home-page');
+  const categorias = allCatalogos;
+  const grid = categorias.map(cat => {
+    const sliderId = 'slider-' + cat.categoria.replace(/\s+/g,'-').toLowerCase();
+    const slides = cat.imagenes.map((img, idx) => `
+      <div class="cat-slide${idx === 0 ? ' active' : ''}">
+        <img src="img/productos/${img}" alt="${cat.categoria} ${idx + 1}">
+      </div>
+    `).join('');
+    const dots = cat.imagenes.map((_, idx) => `<span class="cat-dot${idx === 0 ? ' active' : ''}" data-slide="${idx}"></span>`).join('');
+    return `
+      <div class="category-card">
+        <a href="#catalog/${cat.categoria}" class="page-link">
+          <div class="category-slider" id="${sliderId}">
+            ${slides}
+            
+            <div class="cat-slider-dots">${dots}</div>
+            
+          </div>
+        </a>
+        <h3>${cat.categoria.charAt(0).toUpperCase() + cat.categoria.slice(1)}</h3>
+        <a href="#catalog/${cat.categoria}" class="page-link btn-ver">Ver productos</a>
+        <div class="category-slider-title">
+             ${cat.categoria.charAt(0).toUpperCase() + cat.categoria.slice(1)} 
+            </div>
+      </div>
+    `;
+  }).join('');
+  homePage.innerHTML = `<h2>Nuestras <span>Categorías</span></h2><div class="category-grid">${grid}</div>`;
+  categorias.forEach(cat => setupCategorySlider(cat.categoria));
+}
+
+
+// Lógica para cada mini-slider de categoría
+function setupCategorySlider(catNombre) {
+  const sliderId = 'slider-' + catNombre.replace(/\s+/g,'-').toLowerCase();
+  const slider = document.getElementById(sliderId);
+  if (!slider) return;
+  const slides = slider.querySelectorAll('.cat-slide');
+  const dots = slider.querySelectorAll('.cat-dot');
+  let current = 0;
+  function goToSlide(idx) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = idx;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+dots.forEach(dot => dot.addEventListener('click', function(e) {
+  e.stopPropagation();
+  e.preventDefault();
+  goToSlide(Number(this.dataset.slide));
+}));
+
+  
+  setInterval(() => { goToSlide((current + 1) % slides.length); }, 4000);
+}
+
+
+    // ========== PRODUCTOS Y CATÁLOGO ==========
+    function getProductImages(product) {
+        // Devuelve un array de imágenes completas
+        return [product.img1, product.img2, product.img3].filter(img => img).map(img => PRODUCT_IMG_PATH + img);
+    }
+    function renderProductCard(p) {
+        const imgs = getProductImages(p);
+        return `
+            <div class="product-card">
+                <div class="product-card-img-container">
+                    <a href="#product/${p.id}" class="page-link">
+                        <img src="${imgs[0] || 'https://placehold.co/250x250'}" alt="${p.nombre}" class="product-card-img">
+                    </a>
+                </div>
+                <div class="product-card-info">
+                    <h5>${p.nombre}</h5>
+                    <p class="product-desc">${p.categoria}</p>
+                    <div class="product-card-footer">
+                        <span class="product-price">$${p.precio.toLocaleString('es-AR')}</span>
+                        <button class="add-to-cart-btn" data-id="${p.id}">Agregar al Carrito</button>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+    function renderCatalogPage(options) {
+        const { category, searchQuery } = options;
+        const catalogTitle = document.getElementById('catalog-title');
+        const filtersAside = document.getElementById('filters-aside');
+        let productsToDisplay = [];
+        if (category) {
+            catalogTitle.innerHTML = `Catálogo de <span>${category}</span>`;
+            productsToDisplay = allProducts.filter(p => p.categoria.toLowerCase() === category.toLowerCase());
+            filtersAside.style.display = 'block';
+            renderFilters(productsToDisplay, category);
+        } else if (searchQuery) {
+            catalogTitle.innerHTML = `Resultados para: <span>${searchQuery}</span>`;
+            const lowerCaseQuery = searchQuery.toLowerCase();
+            productsToDisplay = allProducts.filter(p => 
+                p.nombre.toLowerCase().includes(lowerCaseQuery) || 
+                p.descripcion.toLowerCase().includes(lowerCaseQuery)
+            );
+            filtersAside.style.display = 'none';
+        }
+        renderProducts(productsToDisplay);
+        if(category) {
+            document.getElementById('type-filters').addEventListener('change', () => applyFilters(category));
+            document.getElementById('price-range').addEventListener('input', () => applyFilters(category));
+        }
+    }
+    function renderFilters(products, category) {
+        const tipos = [...new Set(products.map(p => p.tipo || ''))];
+        document.getElementById('type-filters').innerHTML = tipos.map(type =>
+            `<label><input type="checkbox" class="type-filter" value="${type}" checked> ${type}</label>`
+        ).join('');
+        const prices = products.map(p => p.precio);
+        const maxPrice = Math.max(0, ...prices);
+        const priceRange = document.getElementById('price-range');
+        priceRange.max = maxPrice; priceRange.value = maxPrice;
+        document.getElementById('price-value').textContent = `$0 - $${maxPrice.toLocaleString('es-AR')}`;
+    }
+    function applyFilters(category) {
+        const selectedTypes = [...document.querySelectorAll('.type-filter:checked')].map(el => el.value);
+        const maxPrice = document.getElementById('price-range').value;
+        document.getElementById('price-value').textContent = `$0 - $${parseInt(maxPrice).toLocaleString('es-AR')}`;
+        const filtered = allProducts.filter(p =>
+            p.categoria.toLowerCase() === category.toLowerCase() &&
+            selectedTypes.includes(p.tipo || '') &&
+            p.precio <= maxPrice
+        );
+        renderProducts(filtered);
+    }
+    function renderProducts(products) {
+        const grid = document.getElementById('products-grid');
+        grid.innerHTML = products.length > 0 ? products.map(renderProductCard).join('') : '<p>No se encontraron productos.</p>';
+    }
+
+    // ========== DETALLE DE PRODUCTO ==========
+    function renderProductDetailPage(productId) {
+        const product = allProducts.find(p => p.id === productId);
+        if (!product) return window.location.hash = '#home';
+        const imgs = getProductImages(product);
+        const related = allProducts.filter(p => p.categoria === product.categoria && p.id !== product.id).slice(0, 4);
+        const relatedHTML = related.length > 0 ? `
+            <div class="related-products">
+                <h3>Productos Relacionados</h3>
+                <div id="related-products-grid">${related.map(renderRelatedProductCard).join('')}</div>
+            </div>
+        ` : '';
+        const pageContent = `
+            <a href="#catalog/${product.categoria}" class="page-link" style="display: block; margin-bottom: 20px;">&larr; Volver al catálogo</a>
+            <div class="product-layout">
+                <div class="product-gallery">
+                    <div class="main-image-container" id="main-image-container">
+                        <img src="${imgs[0] || ''}" alt="${product.nombre}" id="main-product-image">
+                        <div class="zoom-icon"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="product-thumbnails" id="product-thumbnails">
+                        ${imgs.map((img, i) => `<img src="${img}" alt="Miniatura ${i+1}" class="${i === 0 ? 'active' : ''}" data-index="${i}">`).join('')}
+                    </div>
+                </div>
+                <div class="product-details">
+                    <span class="category-tag">${product.categoria}${product.tipo ? ' - ' + product.tipo : ''}</span>
+                    <h3>${product.nombre}</h3>
+                    <p class="description">${product.descripcion}</p>
+                    <div class="price">$${product.precio.toLocaleString('es-AR')}</div>
+                    <button class="add-to-cart-btn" data-id="${product.id}"><i class="fas fa-cart-plus"></i> Agregar al Carrito</button>
+                </div>
+            </div>
+            ${relatedHTML}
+        `;
+        document.getElementById('product-detail-page').innerHTML = pageContent;
+        setupProductGalleryListeners(product);
+    }
+    function renderRelatedProductCard(p) {
+        const imgs = getProductImages(p);
+        return `
+            <div class="product-card related-product-card">
+                <div class="product-card-img-container">
+                    <a href="#product/${p.id}" class="page-link">
+                        <img src="${imgs[0] || 'https://placehold.co/150x150'}" alt="${p.nombre}" class="product-card-img">
+                    </a>
+                </div>
+                <div class="product-card-info">
+                    <h5>${p.nombre}</h5>
+                    <span class="product-price">$${p.precio.toLocaleString('es-AR')}</span>
+                </div>
+            </div>
+        `;
+    }
+    function setupProductGalleryListeners(product) {
+        const mainImage = document.getElementById('main-product-image');
+        const thumbnails = document.getElementById('product-thumbnails');
+        const imgs = getProductImages(product);
+        thumbnails.addEventListener('click', e => {
+            if (e.target.tagName === 'IMG') {
+                const index = e.target.dataset.index;
+                mainImage.src = imgs[index];
+                if (thumbnails.querySelector('img.active')) {
+                   thumbnails.querySelector('img.active').classList.remove('active');
+                }
+                e.target.classList.add('active');
+            }
+        });
+        document.getElementById('main-image-container').addEventListener('click', () => {
+            document.getElementById('lightbox-image').src = mainImage.src;
+            document.getElementById('lightbox-modal').classList.add('visible');
+        });
+    }
+
+    // ========== BUSCADOR Y EVENTOS ==========
+    function setupEventListeners() {
+        document.getElementById('search-form').addEventListener('submit', e => {
+            e.preventDefault();
+            const query = document.getElementById('search-input').value.trim();
+            if (query) {
+                window.location.hash = `#search/${encodeURIComponent(query)}`;
+                document.getElementById('search-input').value = '';
+            }
+        });
+        document.getElementById('cart-btn').addEventListener('click', () => document.getElementById('cart-panel').classList.add('open'));
+        document.getElementById('close-cart-btn').addEventListener('click', () => document.getElementById('cart-panel').classList.remove('open'));
+        document.getElementById('lightbox-modal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('lightbox-modal') || e.target === document.querySelector('.lightbox-close')) {
+                document.getElementById('lightbox-modal').classList.remove('visible');
+            }
+        });
+        document.getElementById('main-content').addEventListener('click', e => {
+            if (e.target.closest('.add-to-cart-btn')) {
+                addToCart(parseInt(e.target.closest('.add-to-cart-btn').dataset.id));
+                const cartBtn = document.getElementById('cart-btn');
+                cartBtn.style.transform = 'scale(1.2)';
+                setTimeout(() => cartBtn.style.transform = 'scale(1)', 300);
+            }
+        });
+        document.getElementById('cart-items-container').addEventListener('click', handleCartAction);
+        document.getElementById('checkout-btn').addEventListener('click', () => { if(cart.length > 0) document.getElementById('checkout-modal').classList.add('visible'); else alert('Tu carrito está vacío.'); });
+        document.getElementById('cancel-checkout').addEventListener('click', () => document.getElementById('checkout-modal').classList.remove('visible'));
+        document.getElementById('checkout-form').addEventListener('submit', handleCheckout);
+    }
+
+    // ========== CARRITO ==========
+    function addToCart(productId) {
+        const p = allProducts.find(p => p.id === productId);
+        if (!p) return;
+        const item = cart.find(i => i.id === productId);
+        if (item) item.quantity++; else cart.push({ ...p, quantity: 1 });
+        updateCart();
+    }
+    function updateCart() {
+        renderCartItems();
+        const total = cart.reduce((sum, item) => sum + (item.precio * item.quantity), 0);
+        document.getElementById('cart-total-price').textContent = `$${total.toLocaleString('es-AR')}`;
+        const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+        const cartCountEl = document.getElementById('cart-count');
+        cartCountEl.textContent = count;
+        cartCountEl.classList.toggle('visible', count > 0);
+        localStorage.setItem('benditaNoblezaCart', JSON.stringify(cart));
+    }
+    function renderCartItems() {
+        const container = document.getElementById('cart-items-container');
+        document.getElementById('cart-empty-msg').style.display = cart.length === 0 ? 'block' : 'none';
+        container.innerHTML = cart.map(item => `
+            <div class="cart-item" data-id="${item.id}">
+                <img src="${getProductImages(item)[0] || 'https://placehold.co/80x80'}" alt="${item.nombre}">
+                <div class="cart-item-info"><h5>${item.nombre}</h5><p>$${item.precio.toLocaleString('es-AR')}</p></div>
+                <div class="cart-item-controls">
+                    <button class="quantity-btn" data-action="decrease">-</button><span>${item.quantity}</span>
+                    <button class="quantity-btn" data-action="increase">+</button><button class="remove-item-btn"><i class="fas fa-trash"></i></button>
+                </div>
+            </div>`).join('');
+    }
+    function handleCartAction(e) {
+        const itemEl = e.target.closest('.cart-item');
+        if (!itemEl) return;
+        const productId = parseInt(itemEl.dataset.id);
+        if (e.target.closest('.remove-item-btn')) {
+            cart = cart.filter(i => i.id !== productId);
+        } else {
+            const action = e.target.closest('button')?.dataset.action;
+            if(action) {
+                const item = cart.find(i => i.id === productId);
+                if (action === 'increase') item.quantity++;
+                else if (action === 'decrease') {
+                    item.quantity--;
+                    if (item.quantity <= 0) cart = cart.filter(i => i.id !== productId);
+                }
+            }
+        }
+        updateCart();
+    }
+    function handleCheckout(e) {
+        e.preventDefault();
+        const name = document.getElementById('customer-name').value;
+        const address = document.getElementById('customer-address').value;
+        if (!name) { alert('Por favor, ingresa tu nombre.'); return; }
+        let msg = `¡Hola Bendita Nobleza! ✨\n\nQuisiera encargar:\n\n${cart.map(i => `*${i.nombre}* (x${i.quantity}) - $${(i.precio * i.quantity).toLocaleString('es-AR')}`).join('\n')}`;
+        const total = cart.reduce((s, i) => s + i.precio * i.quantity, 0);
+        msg += `\n\n*TOTAL: $${total.toLocaleString('es-AR')}*\n\nMis datos:\nNombre: *${name}*`;
+        if (address) msg += `\nDirección: *${address}*`;
+        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+        cart = [];
+        updateCart();
+        document.getElementById('checkout-modal').classList.remove('visible');
+        document.getElementById('cart-panel').classList.remove('open');
+    }
+
+    </script>
+</body>
+</html>
+
+
