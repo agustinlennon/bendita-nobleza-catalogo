@@ -174,5 +174,16 @@
     "img1": "AlmohadonApego1.png",
     "img2": "taza_virgen.png",
     "img3": ""
+  },
+  {
+    "id": 18,
+    "categoria": "tazas",
+    "tipo": "madera",
+    "nombre": "taza buscar",
+    "descripcion": "",
+    "precio": 4000,
+    "img1": "",
+    "img2": "",
+    "img3": ""
   }
 ]
