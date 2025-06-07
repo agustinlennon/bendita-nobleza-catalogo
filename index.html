@@ -395,6 +395,7 @@ dots.forEach(dot => dot.addEventListener('click', function(e) {
         (p.descripcion && p.descripcion.toLowerCase().includes(lowerCaseQuery)) ||
         (p.categoria && p.categoria.toLowerCase().includes(lowerCaseQuery)) ||
         (p.tipo && p.tipo.toLowerCase().includes(lowerCaseQuery)) ||
+        (p.keywords && p.keywords.toLowerCase().includes(lowerCaseQuery)) ||
         (String(p.precio).includes(lowerCaseQuery))
     );
 });
