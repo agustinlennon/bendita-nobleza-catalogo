@@ -185,5 +185,16 @@
     "img1": "",
     "img2": "",
     "img3": ""
+  },
+  {
+    "id": 19,
+    "categoria": "indumentaria",
+    "tipo": "remeras",
+    "nombre": "remerita manga larga",
+    "descripcion": "",
+    "precio": 10400,
+    "img1": "",
+    "img2": "",
+    "img3": ""
   }
 ]
