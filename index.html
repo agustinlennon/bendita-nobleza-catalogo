@@ -389,10 +389,16 @@ dots.forEach(dot => dot.addEventListener('click', function(e) {
         } else if (searchQuery) {
             catalogTitle.innerHTML = `Resultados para: <span>${searchQuery}</span>`;
             const lowerCaseQuery = searchQuery.toLowerCase();
-            productsToDisplay = allProducts.filter(p => 
-                p.nombre.toLowerCase().includes(lowerCaseQuery) || 
-                p.descripcion.toLowerCase().includes(lowerCaseQuery)
-            );
+          productsToDisplay = allProducts.filter(p => {
+    return (
+        (p.nombre && p.nombre.toLowerCase().includes(lowerCaseQuery)) ||
+        (p.descripcion && p.descripcion.toLowerCase().includes(lowerCaseQuery)) ||
+        (p.categoria && p.categoria.toLowerCase().includes(lowerCaseQuery)) ||
+        (p.tipo && p.tipo.toLowerCase().includes(lowerCaseQuery)) ||
+        (String(p.precio).includes(lowerCaseQuery))
+    );
+});
+
             filtersAside.style.display = 'none';
         }
         renderProducts(productsToDisplay);
