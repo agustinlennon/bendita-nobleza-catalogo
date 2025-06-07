@@ -8,7 +8,8 @@
     "precio": 6500,
     "img1": "AlmohadonApego1.png",
     "img2": "taza_virgen.png",
-    "img3": ""
+    "img3": "",
+    "keywords": ""
   },
   {
     "id": 2,
@@ -19,7 +20,8 @@
     "precio": 8500,
     "img1": "taza_jesus.png",
     "img2": "AlmohadonApego1.png",
-    "img3": ""
+    "img3": "",
+    "keywords": ""
   },
   {
     "id": 3,
@@ -30,7 +32,8 @@
     "precio": 8000,
     "img1": "taza_virgen.png",
     "img2": "",
-    "img3": ""
+    "img3": "",
+    "keywords": ""
   },
   {
     "id": 5,
@@ -41,7 +44,8 @@
     "precio": 3500,
     "img1": "taza_jesus.png",
     "img2": "",
-    "img3": ""
+    "img3": "",
+    "keywords": ""
   },
   {
     "id": 6,
@@ -52,7 +56,8 @@
     "precio": 7000,
     "img1": "taza_virgen.png",
     "img2": "",
-    "img3": ""
+    "img3": "",
+    "keywords": ""
   },
   {
     "id": 7,
@@ -63,7 +68,8 @@
     "precio": 7500,
     "img1": "taza_jesus.png",
     "img2": "taza_virgen.png",
-    "img3": ""
+    "img3": "",
+    "keywords": ""
   },
   {
     "id": 8,
@@ -74,7 +80,8 @@
     "precio": 5000,
     "img1": "taza_virgen.png",
     "img2": "taza_jesus.png",
-    "img3": ""
+    "img3": "",
+    "keywords": ""
   },
   {
     "id": 9,
@@ -85,7 +92,8 @@
     "precio": 4500,
     "img1": "taza_jesus.png",
     "img2": "taza_virgen.png",
-    "img3": ""
+    "img3": "",
+    "keywords": ""
   },
   {
     "id": 10,
@@ -96,7 +104,8 @@
     "precio": 5000,
     "img1": "AlmohadonApego1.png",
     "img2": "taza_virgen.png",
-    "img3": ""
+    "img3": "",
+    "keywords": ""
   },
   {
     "id": 11,
@@ -107,7 +116,8 @@
     "precio": 5000,
     "img1": "taza_jesus.png",
     "img2": "taza_virgen.png",
-    "img3": ""
+    "img3": "",
+    "keywords": ""
   },
   {
     "id": 12,
@@ -118,7 +128,8 @@
     "precio": 5000,
     "img1": "AlmohadonApego1.png",
     "img2": "taza_virgen.png",
-    "img3": ""
+    "img3": "",
+    "keywords": ""
   },
   {
     "id": 13,
@@ -129,7 +140,8 @@
     "precio": 3500,
     "img1": "taza_virgen.png",
     "img2": "taza_jesus.png",
-    "img3": ""
+    "img3": "",
+    "keywords": ""
   },
   {
     "id": 14,
@@ -140,7 +152,8 @@
     "precio": 5000,
     "img1": "taza_jesus.png",
     "img2": "taza_virgen.png",
-    "img3": ""
+    "img3": "",
+    "keywords": ""
   },
   {
     "id": 10,
@@ -151,7 +164,8 @@
     "precio": 5000,
     "img1": "AlmohadonApego1.png",
     "img2": "taza_virgen.png",
-    "img3": ""
+    "img3": "",
+    "keywords": ""
   },
   {
     "id": 16,
@@ -162,7 +176,8 @@
     "precio": 5000,
     "img1": "taza_jesus.png",
     "img2": "taza_virgen.png",
-    "img3": ""
+    "img3": "",
+    "keywords": ""
   },
   {
     "id": 17,
@@ -173,7 +188,8 @@
     "precio": 5000,
     "img1": "AlmohadonApego1.png",
     "img2": "taza_virgen.png",
-    "img3": ""
+    "img3": "",
+    "keywords": "oferta"
   },
   {
     "id": 18,
@@ -184,7 +200,8 @@
     "precio": 4000,
     "img1": "",
     "img2": "",
-    "img3": ""
+    "img3": "",
+    "keywords": ""
   },
   {
     "id": 19,
@@ -195,6 +212,7 @@
     "precio": 10400,
     "img1": "",
     "img2": "",
-    "img3": ""
+    "img3": "",
+    "keywords": "manguita larga"
   }
 ]
