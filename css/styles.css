@@ -210,6 +210,13 @@ h1 span, h2 span { font-weight: 700; color: var(--lila-oscuro); }
 .add-to-cart-btn { background-color: var(--lila-oscuro); color: var(--blanco); border: none; padding: 8px 15px; border-radius: 8px; cursor: pointer; transition: background-color 0.3s ease; font-weight: 500; }
 .add-to-cart-btn:hover { background-color: #8968CD; }
 
+/* --- AJUSTA TAMAÑO DEL CONTAINER EN CATALOGO Y BUSQUEDAS --- */
+#products-grid:only-child, 
+#products-grid:has(.product-card:only-child) {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 200px));
+  justify-content: center;
+}
+
 /* --- PRODUCT DETAIL PAGE --- */
 #product-detail-page .product-layout { display: flex; gap: 40px; background: var(--blanco); padding: 40px; border-radius: 12px; box-shadow: var(--sombra-suave); }
 .product-gallery { flex: 1; max-width: 500px; }
