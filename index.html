@@ -541,6 +541,20 @@ dots.forEach(dot => dot.addEventListener('click', function(e) {
         updateCart();
     }
     function updateCart() {
+        
+          // Sincroniza los productos en el carrito con el JSON actual
+    cart = cart.map(item => {
+        const latest = allProducts.find(p => p.id === item.id);
+        if (latest) {
+            // Actualiza nombre, precio, imagen, etc, pero conserva la cantidad actual
+            return { ...latest, quantity: item.quantity };
+        } else {
+            // Si el producto ya no está, podrías devolver el viejo (item), o descartarlo:
+            // return null; // <-- Si querés sacarlo del carrito automáticamente
+            return item;     // <-- Si preferís dejarlo hasta que el usuario lo elimine
+        }
+    }).filter(Boolean); // Elimina los null si descartás productos eliminados
+        
         renderCartItems();
         const total = cart.reduce((sum, item) => sum + (item.precio * item.quantity), 0);
         document.getElementById('cart-total-price').textContent = `$${total.toLocaleString('es-AR')}`;
