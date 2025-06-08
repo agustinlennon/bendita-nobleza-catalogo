@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bendita Nobleza - Artículos Religiosos</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Estilos CSS -->
+        <link rel="stylesheet" href="css/styles.css">
+    <!-- Si tenías estilos embebidos, déjalos aquí también -->
+    <style>
+        /* CSS Básico y de Estructura */
+     </style>
+</head>
+
+<body>
+    <!-- NAVEGADOR -->
+    <nav>
+        <a href="#home" class="logo page-link">Bendita Nobleza</a>
+        <div class="nav-center">
+            <ul class="nav-links">
+                <li class="nav-item"><a href="#home" class="page-link">Inicio</a></li>
+                <li class="nav-item">
+                   <a href="#catalog" class="page-link">Catálogo</a>
+                    <ul class="dropdown" id="category-dropdown"></ul>
+                </li>
+                <li class="nav-item">
+                    <span>Contacto</span>
+                    <ul class="dropdown">
+                        <li><a href="https://wa.me/+5491134634881" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+                        <li><a href="https://instagram.com/benditanobleza" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+                         <li><a href="https://facebook.com/TUUSUARIO" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="mailto:benditanobleza@gmail.com"><i class="far fa-envelope"></i> Gmail</a></li>
+                          <li><a href="https://t.me/TUUSUARIO" target="_blank"><i class="fab fa-telegram"></i> Telegram</a></li>
+                        <li><a href="https://pinterest.com/TUUSUARIO" target="_blank"><i class="fab fa-pinterest"></i> Pinterest</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <form class="search-container" id="search-form">
+            <input type="search" id="search-input" placeholder="Buscar productos...">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+    </nav>
+
+    <!-- SLIDER DE PORTADA -->
+    <header class="slider-container" id="main-slider"></header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main id="main-content">
+        <section id="home-page" class="page"></section>
+        <section id="catalog-page" class="page">
+            <h2 id="catalog-title">Catálogo</h2>
+            <div class="content-wrapper">
+                <aside class="filters" id="filters-aside">
+                    <div class="filter-group" id="category-filter-group">
+                        <h4>Categorías</h4>
+                        <div id="category-filters"></div>
+                    </div>
+                    <div class="filter-group" id="type-filter-group">
+                        <h4>Tipos</h4>
+                        <div id="type-filters"></div>
+                    </div>
+                    <div class="filter-group">
+                        <h4>Rango de Precio</h4>
+                        <input type="range" id="price-range" min="0" max="10000" step="100">
+                        <div id="price-value">$0 - $10000</div>
+                    </div>
+                </aside>
+                <div class="products-area">
+                    <div id="products-grid"></div>
+                </div>
+            </div>
+        </section>
+        <section id="product-detail-page" class="page"></section>
+    </main>
+
+    <!-- FOOTER Y MODALES -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-column"><h4>Bendita Nobleza</h4><p>Conectando tu fe con diseños únicos y llenos de amor.</p></div>
+            <div class="footer-column"><h4>Contacto</h4><p><i class="fas fa-phone"></i> <a href="tel:+5491134634881">+54 9 11 3463-4881</a></p><p><i class="fas fa-envelope"></i> <a href="mailto:benditanobleza@gmail.com">benditanobleza@gmail.com</a></p></div>
+            <div class="footer-column"><h4>Seguinos</h4>
+                <div class="social-links">
+                    <a href="https://wa.me/+5491134634881" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://instagram.com/benditanobleza" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://facebook.com/TUUSUARIO" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="https://pinterest.com/TUUSUARIO" target="_blank" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                </div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2025 Bendita Nobleza. Todos los derechos reservados.</p></div>
+    </footer>
+    <div id="lightbox-modal" class="lightbox-modal"><span class="lightbox-close">&times;</span><div class="lightbox-content"><img src="" id="lightbox-image" alt="Vista ampliada del producto"></div></div>
+    <div class="floating-buttons"><a href="https://wa.me/+5491134634881" target="_blank" class="float-btn" id="whatsapp-btn"><i class="fab fa-whatsapp"></i></a><button id="cart-btn" class="float-btn"><i class="fas fa-shopping-cart"></i><span id="cart-count">0</span></button></div>
+    <aside class="cart-panel" id="cart-panel"><div class="cart-header"><h3>Mi Carrito</h3><button id="close-cart-btn">&times;</button></div><div class="cart-body"><div id="cart-items-container"></div><p id="cart-empty-msg">Tu carrito está vacío.</p></div><div class="cart-footer"><div class="cart-total"><span>Total:</span><span id="cart-total-price">$0</span></div><button id="checkout-btn">Enviar Carrito por WhatsApp</button></div></aside>
+    <div class="modal-overlay" id="checkout-modal"><div class="modal-content"><h3>Completa tus datos para continuar</h3><form id="checkout-form"><input type="text" id="customer-name" placeholder="Tu Nombre Completo" required><input type="text" id="customer-address" placeholder="Dirección de envío (Opcional)"><div class="modal-buttons"><button type="button" id="cancel-checkout">Cancelar</button><button type="submit" id="confirm-checkout">Confirmar y Enviar</button></div></form></div></div>
+
+    <script>
+    // ================== CONFIGURACIÓN DE RUTAS Y DATOS ==================
+    const PRODUCTS_JSON_PATH = 'products.json';
+    const CATALOGO_JSON_PATH = 'catalogo.json';
+    const SLIDER_JSON_PATH   = 'slider.json';
+    const SLIDER_IMG_PATH    = 'img/sliders/';
+    const PRODUCT_IMG_PATH   = 'img/productos/';
+    const WHATSAPP_NUMBER    = '+5491134634881';
+
+    let allProducts = [];
+    let allCatalogos = [];
+    let allSliders = [];
+    let cart = JSON.parse(localStorage.getItem('benditaNoblezaCart')) || [];
+    let mainSliderInterval;
+
+    // ================== INICIO DE LA APLICACIÓN ==================
+    document.addEventListener('DOMContentLoaded', async () => {
+        try {
+            [allProducts, allCatalogos, allSliders] = await Promise.all([
+                fetch(PRODUCTS_JSON_PATH).then(res => res.json()),
+                fetch(CATALOGO_JSON_PATH).then(res => res.json()),
+                fetch(SLIDER_JSON_PATH).then(res => res.json())
+            ]);
+            init();
+        } catch (error) {
+            console.error("Error al cargar los datos de la aplicación:", error);
+            document.getElementById('main-content').innerHTML = `
+                <p style="text-align:center; padding: 50px; font-size: 1.2rem; color: #555;">
+                    Ocurrió un error al cargar la tienda.<br>
+                    Por favor, intente de nuevo más tarde.
+                </p>`;
+        }
+    });
+
+    function init() {
+        setupRouting();
+        setupEventListeners();
+        populateCategoriesDropdown();
+        updateCart();
+        handleRouteChange();
+    }
+
+    // ================== FUNCIONALIDAD DE SLIDERS ==================
+    function makeSliderDraggable(slider, nextSlideFn, prevSlideFn) {
+        let isDown = false, startX, walk = 0;
+        slider.classList.add('draggable');
+        const start = (e) => { isDown = true; slider.classList.add('dragging'); startX = (e.pageX || e.touches[0].pageX) - slider.offsetLeft; walk = 0; };
+        const end = () => { isDown = false; slider.classList.remove('dragging'); if (walk < -75) nextSlideFn(); else if (walk > 75) prevSlideFn(); };
+        const move = (e) => { if (!isDown) return; e.preventDefault(); const x = (e.pageX || e.touches[0].pageX) - slider.offsetLeft; walk = x - startX; };
+        slider.addEventListener('mousedown', start); slider.addEventListener('touchstart', start, { passive: true });
+        slider.addEventListener('mouseleave', end); slider.addEventListener('mouseup', end); slider.addEventListener('touchend', end);
+        slider.addEventListener('mousemove', move); slider.addEventListener('touchmove', move);
+    }
+
+    // ================== ROUTING Y MANEJO DE VISTAS ==================
+    function setupRouting() {
+        window.addEventListener('hashchange', handleRouteChange);
+        document.body.addEventListener('click', e => {
+            const link = e.target.closest('.page-link');
+            if (link) { e.preventDefault(); const targetHash = new URL(link.href, window.location.href).hash; if (window.location.hash !== targetHash) window.location.hash = targetHash; else handleRouteChange(); }
+        });
+    }
+
+    function handleRouteChange() {
+        const hash = window.location.hash || '#home';
+        const [path, param] = hash.substring(1).split('/');
+        document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+        document.getElementById('main-slider').style.display = 'none';
+        if (mainSliderInterval) clearInterval(mainSliderInterval);
+
+        switch (path) {
+            case 'home':
+                document.getElementById('home-page').classList.add('active');
+                document.getElementById('main-slider').style.display = 'block';
+                renderHomePage();
+                renderMainSlider();
+                break;
+            case 'catalog':
+                document.getElementById('catalog-page').classList.add('active');
+                renderCatalogPage({ category: param ? decodeURIComponent(param) : 'all' });
+                break;
+            case 'search':
+                 document.getElementById('catalog-page').classList.add('active');
+                 renderCatalogPage({ searchQuery: decodeURIComponent(param || '') });
+                 break;
+            case 'product':
+                document.getElementById('product-detail-page').classList.add('active');
+                renderProductDetailPage(parseInt(param));
+                break;
+            default:
+                window.location.hash = '#home';
+        }
+        window.scrollTo(0, 0);
+    }
+    
+    // ================== RENDERIZADO DE VISTAS ==================
+    function renderMainSlider() {
+        const sliderContainer = document.getElementById('main-slider');
+        sliderContainer.innerHTML = `<div class="slides-wrapper" style="width:100%; height:100%; position:relative;"> ${allSliders.map((s, i) => `<div class="slide ${i === 0 ? 'active' : ''}"><img src="${SLIDER_IMG_PATH}${s.imagen}" alt="Promoción ${i+1}"></div>`).join('')}</div> <div class="main-slider-dots">${allSliders.map((_, i) => `<span class="dot ${i === 0 ? 'active' : ''}" data-slide="${i}"></span>`).join('')}</div>`;
+        const slides = sliderContainer.querySelectorAll('.slide'), dots = sliderContainer.querySelectorAll('.dot'); let current = 0;
+        const goToSlide = (index) => { if (index < 0) index = slides.length - 1; if (index >= slides.length) index = 0; slides[current].classList.remove('active'); dots[current].classList.remove('active'); current = index; slides[current].classList.add('active'); dots[current].classList.add('active'); };
+        dots.forEach(dot => dot.addEventListener('click', () => goToSlide(Number(dot.dataset.slide))));
+        if(mainSliderInterval) clearInterval(mainSliderInterval);
+        mainSliderInterval = setInterval(() => goToSlide(current + 1), 5000);
+        makeSliderDraggable(sliderContainer, () => goToSlide(current + 1), () => goToSlide(current - 1));
+    }
+
+    function renderHomePage() {
+        const homePage = document.getElementById('home-page');
+        homePage.innerHTML = `<h2>Nuestras <span>Categorías</span></h2><div class="category-grid">${
+            allCatalogos.map(cat => {
+                const slidesHTML = cat.imagenes.map((img, idx) => `<div class="cat-slide ${idx === 0 ? 'active' : ''}"><img src="${PRODUCT_IMG_PATH}${img}" alt="${cat.categoria}"></div>`).join('');
+                const dotsHTML = cat.imagenes.map((_, idx) => `<span class="cat-dot ${idx === 0 ? 'active' : ''}" data-slide="${idx}"></span>`).join('');
+                return `<a href="#catalog/${cat.categoria}" class="category-card page-link"><div class="category-slider" id="slider-${cat.categoria.replace(/\s+/g, '-')}">${slidesHTML}<div class="cat-slider-dots">${dotsHTML}</div></div><div class="category-card-title">${cat.categoria}</div></a>`;
+            }).join('')
+        }</div>`;
+        allCatalogos.forEach(cat => {
+            const sliderId = `slider-${cat.categoria.replace(/\s+/g, '-')}`;
+            const sliderElement = document.getElementById(sliderId);
+            if (sliderElement) setupCategorySlider(sliderElement);
+        });
+    }
+
+    function setupCategorySlider(sliderElement) {
+        const slides = sliderElement.querySelectorAll('.cat-slide');
+        const dots = sliderElement.querySelectorAll('.cat-dot');
+        if (slides.length <= 1) {
+            if(dots.length > 0) dots[0].parentElement.style.display = 'none';
+            return;
+        }
+        let current = 0;
+        let slideInterval = null;
+        const goToSlide = (index) => { slides[current].classList.remove('active'); dots[current].classList.remove('active'); current = (index + slides.length) % slides.length; slides[current].classList.add('active'); dots[current].classList.add('active'); };
+        dots.forEach((dot, index) => { dot.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); goToSlide(index); clearInterval(slideInterval); }); });
+        const startInterval = () => { clearInterval(slideInterval); slideInterval = setInterval(() => goToSlide(current + 1), 4000); };
+        makeSliderDraggable(sliderElement, () => { goToSlide(current + 1); clearInterval(slideInterval); }, () => { goToSlide(current - 1); clearInterval(slideInterval); });
+        sliderElement.closest('.page-link').addEventListener('mouseenter', () => clearInterval(slideInterval));
+        sliderElement.closest('.page-link').addEventListener('mouseleave', startInterval);
+        startInterval();
+    }
+    
+    // CORRECCIÓN: Lógica de búsqueda mejorada
+    function renderCatalogPage(options) {
+        const { category, searchQuery } = options;
+        const catalogTitle = document.getElementById('catalog-title'), filtersAside = document.getElementById('filters-aside');
+        document.getElementById('category-filter-group').style.display = 'none'; document.getElementById('type-filter-group').style.display = 'none';
+
+        if (searchQuery) {
+            catalogTitle.innerHTML = `Resultados para: <span>${searchQuery}</span>`;
+            const lowerCaseQuery = searchQuery.toLowerCase();
+            // Búsqueda por múltiples campos
+            const results = allProducts.filter(p => 
+                (p.nombre && p.nombre.toLowerCase().includes(lowerCaseQuery)) ||
+                (p.descripcion && p.descripcion.toLowerCase().includes(lowerCaseQuery)) ||
+                (p.categoria && p.categoria.toLowerCase().includes(lowerCaseQuery)) ||
+                (p.tipo && p.tipo.toLowerCase().includes(lowerCaseQuery)) ||
+                (p.keywords && p.keywords.toLowerCase().includes(lowerCaseQuery))
+            );
+            renderProducts(results);
+            filtersAside.style.display = 'none';
+        } else if (category === 'all') {
+            catalogTitle.innerHTML = `Todos los <span>Productos</span>`;
+            filtersAside.style.display = 'block'; document.getElementById('category-filter-group').style.display = 'block';
+            renderAllCategoriesFilter();
+            applyFilters('all');
+        } else {
+            catalogTitle.innerHTML = `Catálogo de <span>${category}</span>`;
+            filtersAside.style.display = 'block'; document.getElementById('type-filter-group').style.display = 'block';
+            renderTypeFilterForCategory(allProducts.filter(p => p.categoria.toLowerCase() === category.toLowerCase()));
+            applyFilters(category);
+        }
+        if (category) {
+            setupFilterListeners(category);
+        }
+    }
+    
+    function getProductImages(product) {
+        if (!product) return [];
+        return [product.img1, product.img2, product.img3].filter(Boolean).map(img => `${PRODUCT_IMG_PATH}${img}`);
+    }
+
+    function renderProducts(products) {
+        document.getElementById('products-grid').innerHTML = products.length > 0 ? products.map(renderProductCard).join('') : '<p>No se encontraron productos.</p>';
+    }
+    
+    function renderProductCard(p) {
+        const firstImage = getProductImages(p)[0] || 'https://placehold.co/250x250/A084E8/FFF?text=BN';
+        return `<div class="product-card"><a href="#product/${p.id}" class="page-link" style="text-decoration:none; color:inherit; display:flex; flex-direction:column; height:100%;"><div class="product-card-img-container"><img src="${firstImage}" alt="${p.nombre}" class="product-card-img"></div><div class="product-card-info"><h5>${p.nombre}</h5><p class="product-desc">${p.categoria}</p><div class="product-card-footer"><span class="product-price">$${p.precio.toLocaleString('es-AR')}</span><button class="add-to-cart-btn" data-id="${p.id}" onclick="event.preventDefault(); event.stopPropagation(); addToCart(${p.id});">Agregar</button></div></div></a></div>`;
+    }
+    
+    function renderRelatedProductCard(p) {
+        const firstImage = getProductImages(p)[0] || 'https://placehold.co/150x150/A084E8/FFF?text=BN';
+        return `<div class="product-card related-product-card"><a href="#product/${p.id}" class="page-link" style="text-decoration:none; color:inherit; display:flex; flex-direction:column; height:100%;"><div class="product-card-img-container"><img src="${firstImage}" alt="${p.nombre}" class="product-card-img"></div><div class="product-card-info"><h5>${p.nombre}</h5><span class="product-price">$${p.precio.toLocaleString('es-AR')}</span></div></a></div>`;
+    }
+
+    // ================== LÓGICA DE FILTROS ==================
+    function renderAllCategoriesFilter() {
+        const categories = [...new Set(allProducts.map(p => p.categoria))];
+        document.getElementById('category-filters').innerHTML = categories.map(cat => `<label><input type="checkbox" class="category-filter" value="${cat}" checked> ${cat.charAt(0).toUpperCase() + cat.slice(1)}</label>`).join('');
+        updatePriceRange(allProducts);
+    }
+    
+    function renderTypeFilterForCategory(productsInCategory) {
+        const types = [...new Set(productsInCategory.map(p => p.tipo).filter(Boolean))];
+        document.getElementById('type-filters').innerHTML = types.length > 0 ? types.map(type => `<label><input type="checkbox" class="type-filter" value="${type}" checked> ${type.charAt(0).toUpperCase() + type.slice(1)}</label>`).join('') : '<p>No hay tipos para filtrar.</p>';
+        updatePriceRange(productsInCategory);
+    }
+
+    function updatePriceRange(products) {
+        const prices = products.length > 0 ? products.map(p => p.precio) : [0];
+        const maxPrice = Math.max(...prices);
+        const priceRange = document.getElementById('price-range');
+        priceRange.max = maxPrice; priceRange.value = maxPrice;
+        document.getElementById('price-value').textContent = `$0 - $${maxPrice.toLocaleString('es-AR')}`;
+    }
+
+    function setupFilterListeners(context) {
+        const filtersAside = document.getElementById('filters-aside');
+        filtersAside.oninput = () => applyFilters(context);
+    }
+
+    function applyFilters(context) {
+        let filteredProducts = [...allProducts];
+        const maxPrice = parseInt(document.getElementById('price-range').value);
+        document.getElementById('price-value').textContent = `$0 - $${maxPrice.toLocaleString('es-AR')}`;
+        filteredProducts = filteredProducts.filter(p => p.precio <= maxPrice);
+
+        if (context === 'all') {
+            const selectedCategories = [...document.querySelectorAll('.category-filter:checked')].map(el => el.value);
+            filteredProducts = filteredProducts.filter(p => selectedCategories.includes(p.categoria));
+        } else {
+            filteredProducts = filteredProducts.filter(p => p.categoria.toLowerCase() === context.toLowerCase());
+            const selectedTypes = [...document.querySelectorAll('.type-filter:checked')].map(el => el.value);
+            if (selectedTypes.length > 0) {
+                 filteredProducts = filteredProducts.filter(p => selectedTypes.includes(p.tipo));
+            }
+        }
+        renderProducts(filteredProducts);
+    }
+    
+    // ================== PÁGINA DE DETALLE ==================
+    function renderProductDetailPage(productId){
+        const product = allProducts.find(p => p.id === productId);
+        if(!product) return window.location.hash = "#home";
+        const imgs = getProductImages(product);
+        const related = allProducts.filter(p => p.categoria === product.categoria && p.id !== product.id).slice(0, 4);
+        const relatedHTML = related.length > 0 ? `<div class="related-products"><h3>Productos Relacionados</h3><div id="related-products-grid">${related.map(renderRelatedProductCard).join("")}</div></div>` : "";
+        const pageContent = `<a href="#catalog/${product.categoria}" class="page-link" style="display: block; margin-bottom: 20px;">&larr; Volver a ${product.categoria}</a><div class="product-layout"><div class="product-gallery"><div class="main-image-container"><img src="${imgs[0] || 'https://placehold.co/500x500'}" alt="${product.nombre}" id="main-product-image"><div class="zoom-icon"><i class="fas fa-search-plus"></i></div></div><div class="product-thumbnails" id="product-thumbnails">${imgs.map((img, i) => `<img src="${img}" alt="Miniatura ${i + 1}" class="${i === 0 ? "active" : ""}" data-index="${i}">`).join("")}</div></div><div class="product-details"><span class="category-tag">${product.categoria}${product.tipo ? " - " + product.tipo : ""}</span><h3>${product.nombre}</h3><p class="description">${product.descripcion}</p><div class="price">$${product.precio.toLocaleString("es-AR")}</div><button class="add-to-cart-btn" data-id="${product.id}"><i class="fas fa-cart-plus"></i> Agregar al Carrito</button></div></div>${relatedHTML}`;
+        document.getElementById("product-detail-page").innerHTML = pageContent;
+        setupProductGalleryListeners(product);
+    }
+    
+    function setupProductGalleryListeners(product) {
+        const productPage = document.getElementById('product-detail-page');
+        if (!productPage) return;
+        const mainImage = productPage.querySelector("#main-product-image"), thumbnailsContainer = productPage.querySelector("#product-thumbnails"), mainImageContainer = productPage.querySelector(".main-image-container"), lightboxModal = document.getElementById('lightbox-modal'), lightboxImage = document.getElementById('lightbox-image');
+        if (!mainImage || !thumbnailsContainer || !mainImageContainer || !lightboxModal) return;
+        thumbnailsContainer.addEventListener('click', (e) => {
+            if (e.target.tagName === 'IMG') {
+                const activeThumbnail = thumbnailsContainer.querySelector('img.active');
+                if (activeThumbnail) activeThumbnail.classList.remove('active');
+                e.target.classList.add('active');
+                mainImage.src = e.target.src;
+            }
+        });
+        mainImageContainer.addEventListener('click', () => {
+            lightboxImage.src = mainImage.src;
+            lightboxModal.classList.add('visible');
+        });
+    }
+
+    function populateCategoriesDropdown() {
+        const uniqueCategories = [...new Set(allProducts.map(p => p.categoria))];
+        document.getElementById('category-dropdown').innerHTML = uniqueCategories.map(cat => `<li><a href="#catalog/${cat}" class="page-link">${cat.charAt(0).toUpperCase() + cat.slice(1)}</a></li>`).join('');
+    }
+    
+    // ================== EVENTOS GLOBALES Y CARRITO ==================
+    function setupEventListeners(){document.getElementById("search-form").addEventListener("submit",e=>{e.preventDefault();const query=document.getElementById("search-input").value.trim();if(query){window.location.hash=`#search/${encodeURIComponent(query)}`;document.getElementById("search-input").value=""}});document.getElementById("cart-btn").addEventListener("click",()=>document.getElementById("cart-panel").classList.add("open"));document.getElementById("close-cart-btn").addEventListener("click",()=>document.getElementById("cart-panel").classList.remove("open"));document.getElementById("lightbox-modal").addEventListener("click",e=>{if(e.target===document.getElementById("lightbox-modal")||e.target===document.querySelector(".lightbox-close"))document.getElementById("lightbox-modal").classList.remove("visible")});const mainContent=document.getElementById("main-content");mainContent.addEventListener("click",e=>{const btn=e.target.closest(".add-to-cart-btn");if(btn)addToCart(parseInt(btn.dataset.id))});document.getElementById("product-detail-page").addEventListener("click",e=>{const btn=e.target.closest(".add-to-cart-btn");if(btn)addToCart(parseInt(btn.dataset.id))});document.getElementById("cart-items-container").addEventListener("click",handleCartAction);document.getElementById("checkout-btn").addEventListener("click",()=>{if(cart.length>0)document.getElementById("checkout-modal").classList.add("visible");else alert("Tu carrito está vacío.")});document.getElementById("cancel-checkout").addEventListener("click",()=>document.getElementById("checkout-modal").classList.remove("visible"));document.getElementById("checkout-form").addEventListener("submit",handleCheckout)}
+    function addToCart(productId){const p=allProducts.find(p=>p.id===productId);if(!p)return;const item=cart.find(i=>i.id===productId);if(item)item.quantity++;else cart.push({...p,quantity:1});updateCart();const cartBtn=document.getElementById("cart-btn");cartBtn.style.transform="scale(1.2)";setTimeout(()=>cartBtn.style.transform="scale(1)",300)}
+    function updateCart(){renderCartItems();const total=cart.reduce((sum,item)=>sum+(item.precio*item.quantity),0);document.getElementById("cart-total-price").textContent=`$${total.toLocaleString("es-AR")}`;const count=cart.reduce((sum,item)=>sum+item.quantity,0);const cartCountEl=document.getElementById("cart-count");cartCountEl.textContent=count;cartCountEl.classList.toggle("visible",count>0);localStorage.setItem("benditaNoblezaCart",JSON.stringify(cart))}
+    function renderCartItems(){const container=document.getElementById("cart-items-container");document.getElementById("cart-empty-msg").style.display=cart.length===0?"block":"none";container.innerHTML=cart.map(item=>{const firstImage=getProductImages(item)[0]||"https://placehold.co/70x70/A084E8/FFF?text=BN";return`<div class="cart-item" data-id="${item.id}"><img src="${firstImage}" alt="${item.nombre}"><div class="cart-item-info"><h5>${item.nombre}</h5><p>$${item.precio.toLocaleString("es-AR")}</p></div><div class="cart-item-controls"><button class="quantity-btn" data-action="decrease">-</button><span>${item.quantity}</span><button class="quantity-btn" data-action="increase">+</button><button class="remove-item-btn"><i class="fas fa-trash"></i></button></div></div>`}).join("")}
+    function handleCartAction(e){const itemEl=e.target.closest(".cart-item");if(!itemEl)return;const productId=parseInt(itemEl.dataset.id);if(e.target.closest(".remove-item-btn")){cart=cart.filter(i=>i.id!==productId)}else{const action=e.target.closest("button")?.dataset.action;if(action){const item=cart.find(i=>i.id===productId);if(action==="increase")item.quantity++;else if(action==="decrease"){item.quantity--;if(item.quantity<=0)cart=cart.filter(i=>i.id!==productId)}}}updateCart()}
+    function handleCheckout(e){e.preventDefault();const name=document.getElementById("customer-name").value,address=document.getElementById("customer-address").value;if(!name){alert("Por favor, ingresa tu nombre.");return}let msg=`¡Hola Bendita Nobleza! ✨\n\nQuisiera encargar:\n\n${cart.map(i=>`*${i.nombre}* (x${i.quantity}) - $${(i.precio*i.quantity).toLocaleString("es-AR")}`).join("\n")}`;const total=cart.reduce((s,i)=>s+i.precio*i.quantity,0);msg+=`\n\n*TOTAL: $${total.toLocaleString("es-AR")}*\n\nMis datos:\nNombre: *${name}*`;if(address)msg+=`\nDirección: *${address}*`;window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`,"_blank");cart=[];updateCart();document.getElementById("checkout-modal").classList.remove("visible");document.getElementById("cart-panel").classList.remove("open")}
+
+    </script>
+</body>
+</html>
