@@ -423,10 +423,16 @@
         });
     }
 
-    function populateCategoriesDropdown() {
-        const uniqueCategories = [...new Set(allProducts.map(p => p.categoria))];
-        document.getElementById('category-dropdown').innerHTML = uniqueCategories.map(cat => `<li><a href="#catalog/${cat}" class="page-link">${cat.charAt(0).toUpperCase() + cat.slice(1)}</a></li>`).join('');
-    }
+  function populateCategoriesDropdown() {
+  document.getElementById('category-dropdown').innerHTML = allCatalogos.map(cat =>
+    `<li>
+      <a href="#catalog/${cat.categoria}" class="page-link">
+        <i class="${cat.icono || ''}"></i> 
+        ${cat.categoria.charAt(0).toUpperCase() + cat.categoria.slice(1)}
+      </a>
+    </li>`
+  ).join('');
+}
     
     // ================== EVENTOS GLOBALES Y CARRITO ==================
     function setupEventListeners(){document.getElementById("search-form").addEventListener("submit",e=>{e.preventDefault();const query=document.getElementById("search-input").value.trim();if(query){window.location.hash=`#search/${encodeURIComponent(query)}`;document.getElementById("search-input").value=""}});document.getElementById("cart-btn").addEventListener("click",()=>document.getElementById("cart-panel").classList.add("open"));document.getElementById("close-cart-btn").addEventListener("click",()=>document.getElementById("cart-panel").classList.remove("open"));document.getElementById("lightbox-modal").addEventListener("click",e=>{if(e.target===document.getElementById("lightbox-modal")||e.target===document.querySelector(".lightbox-close"))document.getElementById("lightbox-modal").classList.remove("visible")});const mainContent=document.getElementById("main-content");mainContent.addEventListener("click",e=>{const btn=e.target.closest(".add-to-cart-btn");if(btn)addToCart(parseInt(btn.dataset.id))});document.getElementById("cart-items-container").addEventListener("click",handleCartAction);document.getElementById("checkout-btn").addEventListener("click",()=>{if(cart.length>0)document.getElementById("checkout-modal").classList.add("visible");else alert("Tu carrito está vacío.")});document.getElementById("cancel-checkout").addEventListener("click",()=>document.getElementById("checkout-modal").classList.remove("visible"));document.getElementById("checkout-form").addEventListener("submit",handleCheckout)}
