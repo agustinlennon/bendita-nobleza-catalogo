@@ -1,22 +1,52 @@
 [
   {
-    "categoria": "mate",
-    "imagenes": ["mate1.jpg", "mate2.jpg"]
-  },
-  {
     "categoria": "almohadon apego",
-    "imagenes": ["almohadon1.jpg", "almohadon2.jpg", "almohadon3.jpg"]
-  },
-  {
-    "categoria": "stickers",
-    "imagenes": ["sticker1.jpg", "sticker2.jpg"]
-  },
-  {
-    "categoria": "tazas",
-    "imagenes": ["taza1.jpg", "taza2.jpg"]
+    "imagenes": [
+      "almohadon1.jpg",
+      "almohadon2.jpg",
+      "almohadon3.jpg"
+    ],
+    "icono": ""
   },
   {
     "categoria": "indumentaria",
-    "imagenes": ["remera1.jpg", "buzo1.jpg"]
+    "imagenes": [
+      "remera1.jpg",
+      "buzo1.jpg"
+    ],
+    "icono": ""
+  },
+  {
+    "categoria": "tazas",
+    "imagenes": [
+      "taza1.jpg",
+      "taza2.jpg"
+    ],
+    "icono": ""
+  },
+  {
+    "categoria": "mates",
+    "imagenes": [
+      "mate1.jpg",
+      "mate2.jpg"
+    ],
+    "icono": ""
+  },
+  {
+    "categoria": "almohadones",
+    "imagenes": [
+      "almohadon1.jpg",
+      "almohadon2.jpg",
+      "almohadon3.jpg"
+    ],
+    "icono": ""
+  },
+  {
+    "categoria": "stickers",
+    "imagenes": [
+      "sticker1.jpg",
+      "sticker2.jpg"
+    ],
+    "icono": ""
   }
 ]
