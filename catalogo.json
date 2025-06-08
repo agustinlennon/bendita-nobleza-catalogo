@@ -14,7 +14,7 @@
       "remera1.jpg",
       "buzo1.jpg"
     ],
-    "icono": ""
+    "icono": "fas fa-heart"
   },
   {
     "categoria": "tazas",
@@ -22,7 +22,7 @@
       "taza1.jpg",
       "taza2.jpg"
     ],
-    "icono": ""
+    "icono": "fas fa-heart"
   },
   {
     "categoria": "mates",
@@ -30,7 +30,7 @@
       "mate1.jpg",
       "mate2.jpg"
     ],
-    "icono": ""
+    "icono": "fas fa-heart"
   },
   {
     "categoria": "almohadones",
@@ -39,7 +39,7 @@
       "almohadon2.jpg",
       "almohadon3.jpg"
     ],
-    "icono": ""
+    "icono": "fas fa-heart"
   },
   {
     "categoria": "stickers",
@@ -47,6 +47,6 @@
       "sticker1.jpg",
       "sticker2.jpg"
     ],
-    "icono": ""
+    "icono": "fas fa-heart"
   }
 ]
