@@ -2,7 +2,7 @@
   {
     "id": 1,
     "categoria": "mate",
-    "": "madera",
+    "tipo": "madera",
     "nombre": "maria del carmen",
     "descripcion": "virgen",
     "precio": 6500,
@@ -15,7 +15,7 @@
   {
     "id": 2,
     "categoria": "indumentaria",
-    "": "Algod?n",
+    "tipo": "Algod?n",
     "nombre": "Modelo Nazareth",
     "descripcion": "Remera de algod?n, talles S al XXL",
     "precio": 17500,
@@ -28,7 +28,7 @@
   {
     "id": 3,
     "categoria": "indumentaria",
-    "": "Modal",
+    "tipo": "Modal",
     "nombre": "Modelo Gala",
     "descripcion": "Remera de modal, Talles S al XXL",
     "precio": 14000,
@@ -41,7 +41,7 @@
   {
     "id": 4,
     "categoria": "indumentaria",
-    "": "Algod?n",
+    "tipo": "Algod?n",
     "nombre": "Modelo Agus",
     "descripcion": "Remera de algod?n, talles S al XXL",
     "precio": 17500,
@@ -54,7 +54,7 @@
   {
     "id": 5,
     "categoria": "indumentaria",
-    "": "Algod?n",
+    "tipo": "Algod?n",
     "nombre": "Modelo Barroco",
     "descripcion": "remera de algod?n, talles S al XXL",
     "precio": 17500,
@@ -67,7 +67,7 @@
   {
     "id": 6,
     "categoria": "indumentaria",
-    "": "Modal",
+    "tipo": "Modal",
     "nombre": "Modelo Hec",
     "descripcion": "Remera modal, talles S al XXL",
     "precio": 14000,
@@ -80,7 +80,7 @@
   {
     "id": 7,
     "categoria": "indumentaria",
-    "": "Algod?n",
+    "tipo": "Algod?n",
     "nombre": "Modelo Jes?s",
     "descripcion": "Remera de algod?n, talles S al XXL",
     "precio": 17500,
@@ -93,7 +93,7 @@
   {
     "id": 8,
     "categoria": "indumentaria",
-    "": "Modal",
+    "tipo": "Modal",
     "nombre": "Modelo Francisco",
     "descripcion": "Remera de modal, Talles S al XXL",
     "precio": 14000,
@@ -106,7 +106,7 @@
   {
     "id": 9,
     "categoria": "indumentaria",
-    "": "Algod?n",
+    "tipo": "Algod?n",
     "nombre": "Modelo Sixtina",
     "descripcion": "Remera de algod?n, talles S al XXL",
     "precio": 17500,
@@ -119,7 +119,7 @@
   {
     "id": 10,
     "categoria": "indumentaria",
-    "": "Algod?n",
+    "tipo": "Algod?n",
     "nombre": "Modelo Arcangel Miguel",
     "descripcion": "Remera de algod?n, talles S al XXL",
     "precio": 17500,
@@ -132,7 +132,7 @@
   {
     "id": 11,
     "categoria": "indumentaria",
-    "": "Modal",
+    "tipo": "Modal",
     "nombre": "Modelo Milagrosa",
     "descripcion": "Remera de modal, Talles S al XXL",
     "precio": 14000,
@@ -145,7 +145,7 @@
   {
     "id": 12,
     "categoria": "indumentaria",
-    "": "Modal",
+    "tipo": "Modal",
     "nombre": "Modelo Marilu",
     "descripcion": "Remera de modal, Talles S al XXL",
     "precio": 14000,
@@ -158,7 +158,7 @@
   {
     "id": 13,
     "categoria": "indumentaria",
-    "": "Modal",
+    "tipo": "Modal",
     "nombre": "Modelo Maria",
     "descripcion": "Remera de modal, Talles S al XXL",
     "precio": 14000,
@@ -171,7 +171,7 @@
   {
     "id": 14,
     "categoria": "indumentaria",
-    "": "Modal",
+    "tipo": "Modal",
     "nombre": "Modelo Isaias",
     "descripcion": "Remera de modal, Talles S al XXL",
     "precio": 14000,
@@ -184,7 +184,7 @@
   {
     "id": 15,
     "categoria": "indumentaria",
-    "": "Modal",
+    "tipo": "Modal",
     "nombre": "Modelo Medalla Milagrosa",
     "descripcion": "Remera de modal, Talles S al XXL",
     "precio": 14000,
@@ -197,7 +197,7 @@
   {
     "id": 16,
     "categoria": "indumentaria",
-    "": "Modal",
+    "tipo": "Modal",
     "nombre": "Modelo Josue",
     "descripcion": "Remera de modal, Talles S al XXL",
     "precio": 14000,
@@ -210,7 +210,7 @@
   {
     "id": 17,
     "categoria": "indumentaria",
-    "": "Modal",
+    "tipo": "Modal",
     "nombre": "Modelo Flores",
     "descripcion": "Remera de modal, Talles S al XXL",
     "precio": 14000,
@@ -223,7 +223,7 @@
   {
     "id": 18,
     "categoria": "indumentaria",
-    "": "Modal",
+    "tipo": "Modal",
     "nombre": "Modelo Filipenses",
     "descripcion": "Remera de modal, Talles S al XXL",
     "precio": 14000,
@@ -236,7 +236,7 @@
   {
     "id": 19,
     "categoria": "indumentaria",
-    "": "Algod?n",
+    "tipo": "Algod?n",
     "nombre": "Modelo Hebreos 13:6",
     "descripcion": "Remera de algod?n, talles S al XXL",
     "precio": 17500,
@@ -249,7 +249,7 @@
   {
     "id": 20,
     "categoria": "indumentaria",
-    "": "Modal",
+    "tipo": "Modal",
     "nombre": "Moddelo Madre",
     "descripcion": "Remera de modal, Talles S al XXL",
     "precio": 14000,
@@ -262,7 +262,7 @@
   {
     "id": 21,
     "categoria": "indumentaria",
-    "": "Modal",
+    "tipo": "Modal",
     "nombre": "Modelo urkupi?a",
     "descripcion": "Remera de modal, Talles S al XXL",
     "precio": 14000,
@@ -275,7 +275,7 @@
   {
     "id": 22,
     "categoria": "Tazas",
-    "": "Ceramica",
+    "tipo": "Ceramica",
     "nombre": "Modelo Taza Josue",
     "descripcion": "Ceramica apto microondas y lavavajillas",
     "precio": 7500,
@@ -288,7 +288,7 @@
   {
     "id": 23,
     "categoria": "Tazas",
-    "": "Ceramica",
+    "tipo": "Ceramica",
     "nombre": "Modelo Taza Filipenses",
     "descripcion": "Ceramica apto microondas y lavavajillas",
     "precio": 7500,
@@ -301,7 +301,7 @@
   {
     "id": 24,
     "categoria": "Tazas",
-    "": "Ceramica",
+    "tipo": "Ceramica",
     "nombre": "Modelo Taza Sol",
     "descripcion": "ceramica apto microondas y lavavajillas",
     "precio": 7500,
@@ -314,7 +314,7 @@
   {
     "id": 25,
     "categoria": "Tazas",
-    "": "Ceramica",
+    "tipo": "Ceramica",
     "nombre": "Modelo Taza Jes?s",
     "descripcion": "Ceramica apto microondas y lavavajillas",
     "precio": 7500,
@@ -327,7 +327,7 @@
   {
     "id": 26,
     "categoria": "Tazas",
-    "": "Ceramica",
+    "tipo": "Ceramica",
     "nombre": "Modelo Taza Luj?n",
     "descripcion": "Ceramica apto microondas y lavavajillas",
     "precio": 7500,
@@ -340,7 +340,7 @@
   {
     "id": 27,
     "categoria": "Tazas",
-    "": "Ceramica",
+    "tipo": "Ceramica",
     "nombre": "Modelo Taza Pedro",
     "descripcion": "Ceramica apto microondas y lavavajillas",
     "precio": 7500,
@@ -353,7 +353,7 @@
   {
     "id": 28,
     "categoria": "Tazas",
-    "": "Ceramica",
+    "tipo": "Ceramica",
     "nombre": "Modelo Taza Medalla",
     "descripcion": "Ceramica apto microondas y lavavajillas",
     "precio": 7500,
@@ -366,7 +366,7 @@
   {
     "id": 29,
     "categoria": "Tazas",
-    "": "Ceramica",
+    "tipo": "Ceramica",
     "nombre": "Modelo Taza Virgen Ni?a",
     "descripcion": "Ceramica apto microondas y lavavajillas",
     "precio": 7500,
@@ -379,7 +379,7 @@
   {
     "id": 30,
     "categoria": "Tazas",
-    "": "Ceramica",
+    "tipo": "Ceramica",
     "nombre": "Modelo Taza Guadalupe",
     "descripcion": "Ceramica apto microondas y lavavajillas",
     "precio": 7500,
@@ -392,7 +392,7 @@
   {
     "id": 31,
     "categoria": "Tazas",
-    "": "Ceramica",
+    "tipo": "Ceramica",
     "nombre": "Modelo Taza Rosario",
     "descripcion": "Ceramica apto microondas y lavavajillas",
     "precio": 7500,
@@ -405,7 +405,7 @@
   {
     "id": 32,
     "categoria": "Tazas",
-    "": "Ceramica",
+    "tipo": "Ceramica",
     "nombre": "Modelo Taza Salmo",
     "descripcion": "Ceramica apto microondas y lavavajillas",
     "precio": 7500,
@@ -418,7 +418,7 @@
   {
     "id": 33,
     "categoria": "Tazas",
-    "": "Ceramica",
+    "tipo": "Ceramica",
     "nombre": "Modelo Taza Junta",
     "descripcion": "Ceramica apto microondas y lavavajillas",
     "precio": 7500,
@@ -431,7 +431,7 @@
   {
     "id": 34,
     "categoria": "Almohadones",
-    "": "Apego",
+    "tipo": "Apego",
     "nombre": "Modelo Medalla Milagrosa",
     "descripcion": "",
     "precio": 7000,
@@ -444,7 +444,7 @@
   {
     "id": 35,
     "categoria": "Almohadones",
-    "": "Apego",
+    "tipo": "Apego",
     "nombre": "Modelo Virgen de Guadalupe",
     "descripcion": "",
     "precio": 7000,
@@ -457,7 +457,7 @@
   {
     "id": 36,
     "categoria": "Almohadones",
-    "": "Apego",
+    "tipo": "Apego",
     "nombre": "Modelo Jesus",
     "descripcion": "",
     "precio": 7000,
@@ -470,7 +470,7 @@
   {
     "id": 37,
     "categoria": "Almohadones",
-    "": "Apego",
+    "tipo": "Apego",
     "nombre": "Modelo Cristo",
     "descripcion": "",
     "precio": 7000,
@@ -483,7 +483,7 @@
   {
     "id": 38,
     "categoria": "Almohadones",
-    "": "Apego",
+    "tipo": "Apego",
     "nombre": "Modelo Ni?o Jes?s",
     "descripcion": "",
     "precio": 7000,
@@ -496,7 +496,7 @@
   {
     "id": 39,
     "categoria": "Almohadones",
-    "": "Apego",
+    "tipo": "Apego",
     "nombre": "Modelo San Francisco de As?s",
     "descripcion": "",
     "precio": 7000,
