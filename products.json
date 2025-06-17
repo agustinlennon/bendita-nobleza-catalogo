@@ -71,7 +71,7 @@
     "nombre": "Modelo Hec",
     "descripcion": "Remera modal, talles S al XXL",
     "precio": 14000,
-    "talles": "S,M,L,XL,XXL",
+    "talles": "S ,M ,L ,XL ,XXL",
     "img1": "hec1.jpeg",
     "img2": "hec2.jpeg",
     "img3": "",
