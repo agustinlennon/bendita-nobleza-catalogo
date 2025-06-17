@@ -454,6 +454,22 @@
         const existingSelector = document.querySelector('.size-selector-overlay');
         if (existingSelector) existingSelector.remove();
 
+                // CAMBIO: Se asegura que 'product.talles' se maneje correctamente si es un string o un array.
+        let availableSizes = [];
+        if (typeof product.talles === 'string') {
+            availableSizes = product.talles.split(',').map(t => t.trim());
+        } else if (Array.isArray(product.talles)) {
+            availableSizes = product.talles;
+        }
+
+        if (availableSizes.length === 0) {
+            console.warn("Producto de indumentaria sin talles definidos:", product.id);
+            // Opcional: podrías agregar el producto con un talle "Único" o mostrar un mensaje.
+            addToCart(product.id, 'Talle Único'); 
+            return;
+        }
+        // FIN DEL CAMBIO
+
         const sizeOrder = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
         const sortedSizes = [...product.talles].sort((a, b) => {
             const indexA = sizeOrder.indexOf(a.toUpperCase());
