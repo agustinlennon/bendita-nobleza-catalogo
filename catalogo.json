@@ -40,13 +40,5 @@
       "almohadon3.jpg"
     ],
     "icono": "fas fa-heart"
-  },
-  {
-    "categoria": "stickers",
-    "imagenes": [
-      "sticker1.jpg",
-      "sticker2.jpg"
-    ],
-    "icono": "fas fa-heart"
   }
 ]
