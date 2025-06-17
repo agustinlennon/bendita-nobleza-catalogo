@@ -450,28 +450,50 @@
     }
     
     // ================== LÓGICA DEL SELECTOR DE TALLES ==================
+ // ================== CAMBIO: NUEVA FUNCIÓN PARA PROCESAR LOS TALLES DE FORMA ROBUSTA ==================
+    function parseSizes(tallesData) {
+        if (!tallesData) {
+            return [];
+        }
+        // Caso 1: Ya es un array. No hacer nada.
+        if (Array.isArray(tallesData)) {
+            return tallesData;
+        }
+        // Caso 2: Es un string. Intentar procesarlo.
+        if (typeof tallesData === 'string') {
+            // Sub-caso 2a: Es una cadena de texto que parece un array JSON (ej: "[\"S\",\"M\"]").
+            if (tallesData.startsWith('[') && tallesData.endsWith(']')) {
+                try {
+                    return JSON.parse(tallesData);
+                } catch (e) {
+                    // Si falla el parseo, se intentará el siguiente método.
+                }
+            }
+            // Sub-caso 2b: Es una cadena separada por comas (ej: "S, M, L").
+            return tallesData.split(',').map(t => t.trim()).filter(t => t); // filter(t => t) elimina elementos vacíos.
+        }
+        // Si no es ni array ni string, devolver una lista vacía para evitar errores.
+        return [];
+    }
+    // ================== FIN DEL CAMBIO ==================
+    
+    // ================== LÓGICA DEL SELECTOR DE TALLES (ACTUALIZADA) ==================
     function showSizeSelector(product, targetElement) {
         const existingSelector = document.querySelector('.size-selector-overlay');
         if (existingSelector) existingSelector.remove();
 
-                // CAMBIO: Se asegura que 'product.talles' se maneje correctamente si es un string o un array.
-        let availableSizes = [];
-        if (typeof product.talles === 'string') {
-            availableSizes = product.talles.split(',').map(t => t.trim());
-        } else if (Array.isArray(product.talles)) {
-            availableSizes = product.talles;
-        }
+        // CAMBIO: Se utiliza la nueva función 'parseSizes' para obtener la lista de talles.
+        const availableSizes = parseSizes(product.talles);
+        // FIN DEL CAMBIO
 
         if (availableSizes.length === 0) {
             console.warn("Producto de indumentaria sin talles definidos:", product.id);
-            // Opcional: podrías agregar el producto con un talle "Único" o mostrar un mensaje.
             addToCart(product.id, 'Talle Único'); 
             return;
         }
-        // FIN DEL CAMBIO
 
         const sizeOrder = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
-        const sortedSizes = [...product.talles].sort((a, b) => {
+        const sortedSizes = availableSizes.sort((a, b) => {
             const indexA = sizeOrder.indexOf(a.toUpperCase());
             const indexB = sizeOrder.indexOf(b.toUpperCase());
             if (indexA !== -1 && indexB !== -1) return indexA - indexB;
