@@ -290,7 +290,7 @@
     "categoria": "Tazas",
     "tipo": "Ceramica",
     "nombre": "Modelo Taza Sol",
-    "descripcion": "ceramica apto microondas y lavavajillas",
+    "descripcion": "Ceramica apto microondas y lavavajillas",
     "precio": 7500,
     "talles": "",
     "img1": "tazasol.jpeg",
@@ -423,7 +423,7 @@
     "descripcion": "",
     "precio": 7000,
     "talles": "",
-    "img1": "milagrosa1.jpeg",
+    "img1": "apegomilagrosa1.jpeg",
     "img2": "milagrosa2.png",
     "img3": "",
     "keywords": ""
