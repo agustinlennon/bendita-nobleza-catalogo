@@ -45,7 +45,7 @@
     "nombre": "Modelo Agus",
     "descripcion": "Remera de algod?n, talles S al XXL",
     "precio": 17500,
-    "talles": ["S,M,L,XL,XXL"],
+    "talles": "\"S\", \"M\", \"L\", \"XL\"",
     "img1": "agus.jpeg",
     "img2": "",
     "img3": "",
