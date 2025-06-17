@@ -1,18 +1,5 @@
 [
   {
-    "id": 1,
-    "categoria": "mate",
-    "tipo": "madera",
-    "nombre": "maria del carmen",
-    "descripcion": "virgen",
-    "precio": 6500,
-    "talles": "",
-    "img1": "AlmohadonApego1.png",
-    "img2": "taza_virgen.png",
-    "img3": "",
-    "keywords": ""
-  },
-  {
     "id": 2,
     "categoria": "indumentaria",
     "tipo": "Algod?n",
