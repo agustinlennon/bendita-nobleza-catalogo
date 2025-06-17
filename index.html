@@ -112,7 +112,7 @@
     let mainSliderInterval;
 
 
-    // ================== CAMBIO: FUNCIÓN PARA FORZAR LA DECODIFICACIÓN UTF-8 ==================
+ // ================== FUNCIÓN PARA FORZAR LA DECODIFICACIÓN UTF-8 ==================
     async function fetchAndDecodeJSON(path) {
         const response = await fetch(path);
         // Leemos la respuesta como un buffer de datos binarios
@@ -124,17 +124,17 @@
         return JSON.parse(text);
     }
     // ================== FIN DEL CAMBIO ==================
-        
+
+
     // ================== INICIO DE LA APLICACIÓN ==================
     document.addEventListener('DOMContentLoaded', async () => {
         try {
-            // CAMBIO: Se utiliza la nueva función fetchAndDecodeJSON para cargar todos los archivos JSON.
+            // Se utiliza la nueva función fetchAndDecodeJSON para cargar todos los archivos JSON.
             [allProducts, allCatalogos, allSliders] = await Promise.all([
                 fetchAndDecodeJSON(PRODUCTS_JSON_PATH),
                 fetchAndDecodeJSON(CATALOGO_JSON_PATH),
                 fetchAndDecodeJSON(SLIDER_JSON_PATH)
             ]);
-            // FIN DEL CAMBIO
             init();
         } catch (error) {
             console.error("Error al cargar los datos de la aplicación:", error);
@@ -145,6 +145,7 @@
                 </p>`;
         }
     });
+        
     function init() {
         setupRouting();
         setupEventListeners();
