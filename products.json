@@ -32,7 +32,7 @@
     "nombre": "Modelo Gala",
     "descripcion": "Remera de modal, Talles S al XXL",
     "precio": 14000,
-    "talles": "S,M,L,XL,XXL",
+    "talles": "S;M;L;XL;XXL;",
     "img1": "Gala1.png",
     "img2": "Gala2.png",
     "img3": "",
