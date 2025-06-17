@@ -2,25 +2,26 @@
   {
     "categoria": "almohadones",
     "imagenes": [
-      "almohadon1.jpg",
-      "almohadon2.jpg",
-      "almohadon3.jpg"
+      "almohadonapego2.jpg",
+      "almohadonpaego1.png"
     ],
     "icono": "fas fa-heart"
   },
   {
     "categoria": "indumentaria",
     "imagenes": [
-      "remera1.jpg",
-      "buzo1.jpg"
+      "remeraBN1.jpg",
+      "remeraBN2.jpg",
+      "remeraBN3.jpg"
     ],
     "icono": "fas fa-heart"
   },
   {
     "categoria": "tazas",
     "imagenes": [
-      "taza1.jpg",
-      "taza2.jpg"
+      "taza_jesus.png",
+      "taza_virgen.png",
+      "tazasol.jpeg"
     ],
     "icono": "fas fa-heart"
   },
