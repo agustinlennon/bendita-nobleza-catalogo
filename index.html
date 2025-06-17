@@ -11,11 +11,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Estilos CSS -->
-        <link rel="stylesheet" href="css/styles.css">
-    <!-- Si tenías estilos embebidos, déjalos aquí también -->
-    <style>
-        /* CSS Básico y de Estructura */
-     </style>
+    <link rel="stylesheet" href="css/stylesv13.css">
 </head>
 
 <body>
@@ -144,54 +140,58 @@
 
     // ================== FUNCIONALIDAD DE SLIDERS ==================
     function makeSliderDraggable(slider, nextSlideFn, prevSlideFn) {
-    let isDown = false, startX, startY, walkX = 0, walkY = 0, locked = false;
-    slider.classList.add('draggable');
-    const start = (e) => {
-        isDown = true;
-        slider.classList.add('dragging');
-        const point = (e.touches ? e.touches[0] : e);
-        startX = point.pageX;
-        startY = point.pageY;
-        walkX = 0; walkY = 0;
-        locked = false;
-    };
-    const end = () => {
-        if (!isDown) return;
-        isDown = false;
-        slider.classList.remove('dragging');
-        // Solo si fue arrastre horizontal relevante
-        if (locked && Math.abs(walkX) > 45) {
-            if (walkX < 0) nextSlideFn();
-            else if (walkX > 0) prevSlideFn();
-        }
-    };
-    const move = (e) => {
-        if (!isDown) return;
-        const point = (e.touches ? e.touches[0] : e);
-        walkX = point.pageX - startX;
-        walkY = point.pageY - startY;
-        // Decide solo cuando ya movió unos píxeles
-        if (!locked && (Math.abs(walkX) > 8 || Math.abs(walkY) > 8)) {
-            locked = Math.abs(walkX) > Math.abs(walkY); // true si horizontal, false si vertical
-        }
-        // Solo prevení el default (bloqueá scroll) si es horizontal
-        if (locked && Math.abs(walkX) > 10) {
-            e.preventDefault();
-        }
-    };
-    slider.addEventListener('mousedown', start);
-    slider.addEventListener('touchstart', start, { passive: false });
-    slider.addEventListener('mouseleave', end);
-    slider.addEventListener('mouseup', end);
-    slider.addEventListener('touchend', end);
-    slider.addEventListener('mousemove', move);
-    slider.addEventListener('touchmove', move, { passive: false });
-}
+        let isDown = false, startX, startY, walkX = 0, walkY = 0, locked = false;
+        slider.classList.add('draggable');
+        const start = (e) => {
+            isDown = true;
+            slider.classList.add('dragging');
+            const point = (e.touches ? e.touches[0] : e);
+            startX = point.pageX;
+            startY = point.pageY;
+            walkX = 0; walkY = 0;
+            locked = false;
+        };
+        const end = () => {
+            if (!isDown) return;
+            isDown = false;
+            slider.classList.remove('dragging');
+            if (locked && Math.abs(walkX) > 45) {
+                if (walkX < 0) nextSlideFn();
+                else if (walkX > 0) prevSlideFn();
+            }
+        };
+        const move = (e) => {
+            if (!isDown) return;
+            const point = (e.touches ? e.touches[0] : e);
+            walkX = point.pageX - startX;
+            walkY = point.pageY - startY;
+            if (!locked && (Math.abs(walkX) > 8 || Math.abs(walkY) > 8)) {
+                locked = Math.abs(walkX) > Math.abs(walkY); 
+            }
+            if (locked && Math.abs(walkX) > 10) {
+                e.preventDefault();
+            }
+        };
+        slider.addEventListener('mousedown', start);
+        slider.addEventListener('touchstart', start, { passive: false });
+        slider.addEventListener('mouseleave', end);
+        slider.addEventListener('mouseup', end);
+        slider.addEventListener('touchend', end);
+        slider.addEventListener('mousemove', move);
+        slider.addEventListener('touchmove', move, { passive: false });
+    }
 
     // ================== ROUTING Y MANEJO DE VISTAS ==================
     function setupRouting() {
         window.addEventListener('hashchange', handleRouteChange);
         document.body.addEventListener('click', e => {
+            // CAMBIO: Aseguramos que el click en el botón de agregar no propague al enlace padre.
+            const btn = e.target.closest(".add-to-cart-btn");
+            if (btn) {
+                e.preventDefault();
+                return;
+            }
+            // FIN DEL CAMBIO
             const link = e.target.closest('.page-link');
             if (link) { e.preventDefault(); const targetHash = new URL(link.href, window.location.href).hash; if (window.location.hash !== targetHash) window.location.hash = targetHash; else handleRouteChange(); }
         });
@@ -275,16 +275,17 @@
         startInterval();
     }
     
-    // CORRECCIÓN: Lógica de búsqueda mejorada
     function renderCatalogPage(options) {
         const { category, searchQuery } = options;
-        const catalogTitle = document.getElementById('catalog-title'), filtersAside = document.getElementById('filters-aside');
-        document.getElementById('category-filter-group').style.display = 'none'; document.getElementById('type-filter-group').style.display = 'none';
+        const catalogTitle = document.getElementById('catalog-title');
+        const filtersAside = document.getElementById('filters-aside');
+        
+        document.getElementById('category-filter-group').style.display = 'none';
+        document.getElementById('type-filter-group').style.display = 'none';
 
         if (searchQuery) {
             catalogTitle.innerHTML = `Resultados para: <span>${searchQuery}</span>`;
             const lowerCaseQuery = searchQuery.toLowerCase();
-            // Búsqueda por múltiples campos
             const results = allProducts.filter(p => 
                 (p.nombre && p.nombre.toLowerCase().includes(lowerCaseQuery)) ||
                 (p.descripcion && p.descripcion.toLowerCase().includes(lowerCaseQuery)) ||
@@ -296,13 +297,18 @@
             filtersAside.style.display = 'none';
         } else if (category === 'all') {
             catalogTitle.innerHTML = `Todos los <span>Productos</span>`;
-            filtersAside.style.display = 'block'; document.getElementById('category-filter-group').style.display = 'block';
+            filtersAside.style.display = 'block';
+            document.getElementById('category-filter-group').style.display = 'block';
             renderAllCategoriesFilter();
             applyFilters('all');
         } else {
             catalogTitle.innerHTML = `Catálogo de <span>${category}</span>`;
-            filtersAside.style.display = 'block'; document.getElementById('type-filter-group').style.display = 'block';
-            renderTypeFilterForCategory(allProducts.filter(p => p.categoria.toLowerCase() === category.toLowerCase()));
+            filtersAside.style.display = 'block';
+            const productsInCategory = allProducts.filter(p => p.categoria.toLowerCase() === category.toLowerCase());
+            
+            document.getElementById('type-filter-group').style.display = 'block';
+            renderTypeFilterForCategory(productsInCategory);
+            
             applyFilters(category);
         }
         if (category) {
@@ -319,32 +325,49 @@
         document.getElementById('products-grid').innerHTML = products.length > 0 ? products.map(renderProductCard).join('') : '<p>No se encontraron productos.</p>';
     }
     
+    // CAMBIO: Se reestructura la tarjeta de producto para que el botón no esté dentro del enlace.
     function renderProductCard(p) {
         const firstImage = getProductImages(p)[0] || 'https://placehold.co/250x250/A084E8/FFF?text=BN';
-        return `<div class="product-card"><a href="#product/${p.id}" class="page-link" style="text-decoration:none; color:inherit; display:flex; flex-direction:column; height:100%;"><div class="product-card-img-container"><img src="${firstImage}" alt="${p.nombre}" class="product-card-img"></div><div class="product-card-info"><h5>${p.nombre}</h5><p class="product-desc">${p.categoria}</p><div class="product-card-footer"><span class="product-price">$${p.precio.toLocaleString('es-AR')}</span><button class="add-to-cart-btn" data-id="${p.id}" onclick="event.preventDefault(); event.stopPropagation(); addToCart(${p.id});">Agregar</button></div></div></a></div>`;
+        return `
+            <div class="product-card" data-id="${p.id}">
+                <a href="#product/${p.id}" class="page-link product-card-main-link">
+                    <div class="product-card-img-container">
+                        <img src="${firstImage}" alt="${p.nombre}" class="product-card-img">
+                    </div>
+                    <div class="product-card-info">
+                        <h5>${p.nombre}</h5>
+                        <p class="product-desc">${p.categoria}</p>
+                    </div>
+                </a>
+                <div class="product-card-footer">
+                    <span class="product-price">$${p.precio.toLocaleString('es-AR')}</span>
+                    <button class="add-to-cart-btn" data-id="${p.id}">Agregar</button>
+                </div>
+            </div>`;
     }
+    // FIN DEL CAMBIO
     
     function renderRelatedProductCard(p) {
-    const imgs = getProductImages(p);
-    return `
-        <div class="product-card related-product-card">
-            <a href="#product/${p.id}" class="page-link" style="text-decoration:none; color:inherit; display:flex; flex-direction:column; height:100%;">
-                <div class="product-card-img-container">
-                    <img src="${imgs[0] || 'https://placehold.co/150x150/A084E8/FFF?text=BN'}" alt="${p.nombre}" class="product-card-img">
+        const imgs = getProductImages(p);
+        return `
+            <div class="product-card related-product-card" data-id="${p.id}">
+                <a href="#product/${p.id}" class="page-link" style="text-decoration:none; color:inherit; display:flex; flex-direction:column; height:100%;">
+                    <div class="product-card-img-container">
+                        <img src="${imgs[0] || 'https://placehold.co/150x150/A084E8/FFF?text=BN'}" alt="${p.nombre}" class="product-card-img">
+                    </div>
+                    <div class="product-card-info">
+                        <h5>${p.nombre}</h5>
+                        <span class="product-price">$${p.precio.toLocaleString('es-AR')}</span>
+                    </div>
+                </a>
+                <div class="product-card-footer" style="padding: 8px;">
+                    <button class="add-to-cart-btn" data-id="${p.id}">
+                        Agregar
+                    </button>
                 </div>
-                <div class="product-card-info">
-                    <h5>${p.nombre}</h5>
-                    <span class="product-price">$${p.precio.toLocaleString('es-AR')}</span>
-                </div>
-            </a>
-            <div class="product-card-footer" style="padding: 8px;">
-                <button class="add-to-cart-btn" data-id="${p.id}">
-                    Agregar
-                </button>
             </div>
-        </div>
-    `;
-}
+        `;
+    }
 
     // ================== LÓGICA DE FILTROS ==================
     function renderAllCategoriesFilter() {
@@ -398,7 +421,7 @@
         const imgs = getProductImages(product);
         const related = allProducts.filter(p => p.categoria === product.categoria && p.id !== product.id).slice(0, 4);
         const relatedHTML = related.length > 0 ? `<div class="related-products"><h3>Productos Relacionados</h3><div id="related-products-grid">${related.map(renderRelatedProductCard).join("")}</div></div>` : "";
-        const pageContent = `<a href="#catalog/${product.categoria}" class="page-link" style="display: block; margin-bottom: 20px;">&larr; Volver a ${product.categoria}</a><div class="product-layout"><div class="product-gallery"><div class="main-image-container"><img src="${imgs[0] || 'https://placehold.co/500x500'}" alt="${product.nombre}" id="main-product-image"><div class="zoom-icon"><i class="fas fa-search-plus"></i></div></div><div class="product-thumbnails" id="product-thumbnails">${imgs.map((img, i) => `<img src="${img}" alt="Miniatura ${i + 1}" class="${i === 0 ? "active" : ""}" data-index="${i}">`).join("")}</div></div><div class="product-details"><span class="category-tag">${product.categoria}${product.tipo ? " - " + product.tipo : ""}</span><h3>${product.nombre}</h3><p class="description">${product.descripcion}</p><div class="price">$${product.precio.toLocaleString("es-AR")}</div><button class="add-to-cart-btn" data-id="${product.id}"><i class="fas fa-cart-plus"></i> Agregar al Carrito</button></div></div>${relatedHTML}`;
+        const pageContent = `<a href="#catalog/${product.categoria}" class="page-link" style="display: block; margin-bottom: 20px;">&larr; Volver a ${product.categoria}</a><div class="product-layout" data-id="${product.id}"><div class="product-gallery"><div class="main-image-container"><img src="${imgs[0] || 'https://placehold.co/500x500'}" alt="${product.nombre}" id="main-product-image"><div class="zoom-icon"><i class="fas fa-search-plus"></i></div></div><div class="product-thumbnails" id="product-thumbnails">${imgs.map((img, i) => `<img src="${img}" alt="Miniatura ${i + 1}" class="${i === 0 ? "active" : ""}" data-index="${i}">`).join("")}</div></div><div class="product-details"><span class="category-tag">${product.categoria}${product.tipo ? " - " + product.tipo : ""}</span><h3>${product.nombre}</h3><p class="description">${product.descripcion}</p><div class="price">$${product.precio.toLocaleString("es-AR")}</div><button class="add-to-cart-btn" data-id="${product.id}">Agregar al Carrito</button></div></div>${relatedHTML}`;
         document.getElementById("product-detail-page").innerHTML = pageContent;
         setupProductGalleryListeners(product);
     }
@@ -422,24 +445,170 @@
         });
     }
 
-  function populateCategoriesDropdown() {
-  document.getElementById('category-dropdown').innerHTML = allCatalogos.map(cat =>
-    `<li>
-      <a href="#catalog/${cat.categoria}" class="page-link">
-        <i class="${cat.icono || ''}"></i> 
-        ${cat.categoria.charAt(0).toUpperCase() + cat.categoria.slice(1)}
-      </a>
-    </li>`
-  ).join('');
-}
+    function populateCategoriesDropdown() {
+        document.getElementById('category-dropdown').innerHTML = allCatalogos.map(cat => `<li><a href="#catalog/${cat.categoria}" class="page-link"><i class="${cat.icono || ''}"></i> ${cat.categoria.charAt(0).toUpperCase() + cat.categoria.slice(1)}</a></li>`).join('');
+    }
     
+    // ================== LÓGICA DEL SELECTOR DE TALLES ==================
+    function showSizeSelector(product, targetElement) {
+        const existingSelector = document.querySelector('.size-selector-overlay');
+        if (existingSelector) existingSelector.remove();
+
+        const sizeOrder = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
+        const sortedSizes = [...product.talles].sort((a, b) => {
+            const indexA = sizeOrder.indexOf(a.toUpperCase());
+            const indexB = sizeOrder.indexOf(b.toUpperCase());
+            if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+            if (indexA !== -1) return -1; if (indexB !== -1) return 1;
+            return a.localeCompare(b);
+        });
+
+        const selectorOptions = sortedSizes.map(talle => `<option value="${talle}">${talle}</option>`).join('');
+
+        const selectorHTML = `
+            <div class="size-selector-overlay">
+                <div class="size-selector-panel">
+                    <h4>Elige un talle</h4>
+                    <select id="size-select-input">${selectorOptions}</select>
+                    <button class="confirm-size-btn">Confirmar</button>
+                </div>
+            </div>`;
+
+        targetElement.insertAdjacentHTML('beforeend', selectorHTML);
+        const overlay = targetElement.querySelector('.size-selector-overlay');
+        
+        setTimeout(() => {
+            overlay.classList.add('visible');
+        }, 10);
+
+        const closeSelector = () => {
+            overlay.classList.remove('visible');
+            setTimeout(() => overlay.remove(), 300);
+        };
+
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) closeSelector();
+        });
+
+        overlay.querySelector('.confirm-size-btn').addEventListener('click', () => {
+            const selectedSize = overlay.querySelector('#size-select-input').value;
+            addToCart(product.id, selectedSize);
+            closeSelector();
+        });
+    }
+
     // ================== EVENTOS GLOBALES Y CARRITO ==================
-    function setupEventListeners(){document.getElementById("search-form").addEventListener("submit",e=>{e.preventDefault();const query=document.getElementById("search-input").value.trim();if(query){window.location.hash=`#search/${encodeURIComponent(query)}`;document.getElementById("search-input").value=""}});document.getElementById("cart-btn").addEventListener("click",()=>document.getElementById("cart-panel").classList.add("open"));document.getElementById("close-cart-btn").addEventListener("click",()=>document.getElementById("cart-panel").classList.remove("open"));document.getElementById("lightbox-modal").addEventListener("click",e=>{if(e.target===document.getElementById("lightbox-modal")||e.target===document.querySelector(".lightbox-close"))document.getElementById("lightbox-modal").classList.remove("visible")});const mainContent=document.getElementById("main-content");mainContent.addEventListener("click",e=>{const btn=e.target.closest(".add-to-cart-btn");if(btn)addToCart(parseInt(btn.dataset.id))});document.getElementById("cart-items-container").addEventListener("click",handleCartAction);document.getElementById("checkout-btn").addEventListener("click",()=>{if(cart.length>0)document.getElementById("checkout-modal").classList.add("visible");else alert("Tu carrito está vacío.")});document.getElementById("cancel-checkout").addEventListener("click",()=>document.getElementById("checkout-modal").classList.remove("visible"));document.getElementById("checkout-form").addEventListener("submit",handleCheckout)}
-    function addToCart(productId){const p=allProducts.find(p=>p.id===productId);if(!p)return;const item=cart.find(i=>i.id===productId);if(item)item.quantity++;else cart.push({...p,quantity:1});updateCart();const cartBtn=document.getElementById("cart-btn");cartBtn.style.transform="scale(1.2)";setTimeout(()=>cartBtn.style.transform="scale(1)",300)}
-    function updateCart(){renderCartItems();const total=cart.reduce((sum,item)=>sum+(item.precio*item.quantity),0);document.getElementById("cart-total-price").textContent=`$${total.toLocaleString("es-AR")}`;const count=cart.reduce((sum,item)=>sum+item.quantity,0);const cartCountEl=document.getElementById("cart-count");cartCountEl.textContent=count;cartCountEl.classList.toggle("visible",count>0);localStorage.setItem("benditaNoblezaCart",JSON.stringify(cart))}
-    function renderCartItems(){const container=document.getElementById("cart-items-container");document.getElementById("cart-empty-msg").style.display=cart.length===0?"block":"none";container.innerHTML=cart.map(item=>{const firstImage=getProductImages(item)[0]||"https://placehold.co/70x70/A084E8/FFF?text=BN";return`<div class="cart-item" data-id="${item.id}"><img src="${firstImage}" alt="${item.nombre}"><div class="cart-item-info"><h5>${item.nombre}</h5><p>$${item.precio.toLocaleString("es-AR")}</p></div><div class="cart-item-controls"><button class="quantity-btn" data-action="decrease">-</button><span>${item.quantity}</span><button class="quantity-btn" data-action="increase">+</button><button class="remove-item-btn"><i class="fas fa-trash"></i></button></div></div>`}).join("")}
-    function handleCartAction(e){const itemEl=e.target.closest(".cart-item");if(!itemEl)return;const productId=parseInt(itemEl.dataset.id);if(e.target.closest(".remove-item-btn")){cart=cart.filter(i=>i.id!==productId)}else{const action=e.target.closest("button")?.dataset.action;if(action){const item=cart.find(i=>i.id===productId);if(action==="increase")item.quantity++;else if(action==="decrease"){item.quantity--;if(item.quantity<=0)cart=cart.filter(i=>i.id!==productId)}}}updateCart()}
-    function handleCheckout(e){e.preventDefault();const name=document.getElementById("customer-name").value,address=document.getElementById("customer-address").value;if(!name){alert("Por favor, ingresa tu nombre.");return}let msg=`¡Hola Bendita Nobleza! ✨\n\nQuisiera encargar:\n\n${cart.map(i=>`*${i.nombre}* (x${i.quantity}) - $${(i.precio*i.quantity).toLocaleString("es-AR")}`).join("\n")}`;const total=cart.reduce((s,i)=>s+i.precio*i.quantity,0);msg+=`\n\n*TOTAL: $${total.toLocaleString("es-AR")}*\n\nMis datos:\nNombre: *${name}*`;if(address)msg+=`\nDirección: *${address}*`;window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`,"_blank");cart=[];updateCart();document.getElementById("checkout-modal").classList.remove("visible");document.getElementById("cart-panel").classList.remove("open")}
+    function setupEventListeners(){
+        document.getElementById("search-form").addEventListener("submit",e=>{e.preventDefault();const query=document.getElementById("search-input").value.trim();if(query){window.location.hash=`#search/${encodeURIComponent(query)}`;document.getElementById("search-input").value=""}});
+        document.getElementById("cart-btn").addEventListener("click",()=>document.getElementById("cart-panel").classList.add("open"));
+        document.getElementById("close-cart-btn").addEventListener("click",()=>document.getElementById("cart-panel").classList.remove("open"));
+        document.getElementById("lightbox-modal").addEventListener("click",e=>{if(e.target===document.getElementById("lightbox-modal")||e.target===document.querySelector(".lightbox-close"))document.getElementById("lightbox-modal").classList.remove("visible")});
+        
+        document.body.addEventListener("click",e=>{
+            const btn = e.target.closest(".add-to-cart-btn");
+            if (btn) {
+                // Prevenimos cualquier acción por defecto (como seguir un enlace)
+                e.preventDefault();
+                
+                const productId = parseInt(btn.dataset.id);
+                const product = allProducts.find(p => p.id === productId);
+                const container = btn.closest('.product-card, .product-layout');
+
+                if (product && container && product.categoria.toLowerCase() === 'indumentaria' && product.talles && product.talles.length > 0) {
+                    showSizeSelector(product, container);
+                } else if (product) {
+                    addToCart(product.id, null);
+                }
+            }
+        });
+
+        document.getElementById("cart-items-container").addEventListener("click",handleCartAction);
+        document.getElementById("checkout-btn").addEventListener("click",()=>{if(cart.length>0)document.getElementById("checkout-modal").classList.add("visible");else alert("Tu carrito está vacío.")});
+        document.getElementById("cancel-checkout").addEventListener("click",()=>document.getElementById("checkout-modal").classList.remove("visible"));
+        document.getElementById("checkout-form").addEventListener("submit",handleCheckout);
+    }
+    
+    function addToCart(productId, size = null){
+        const p = allProducts.find(p => p.id === productId);
+        if (!p) return;
+        
+        const cartId = size ? `${productId}-${size}` : String(productId);
+        const itemInCart = cart.find(i => i.cartId === cartId);
+
+        if (itemInCart) {
+            itemInCart.quantity++;
+        } else {
+            cart.push({ ...p, quantity: 1, size: size, cartId: cartId });
+        }
+        
+        updateCart();
+        const cartBtn = document.getElementById("cart-btn");
+        cartBtn.style.transform="scale(1.2)";
+        setTimeout(()=>cartBtn.style.transform="scale(1)",300);
+    }
+    
+    function updateCart(){
+        renderCartItems();
+        const total=cart.reduce((sum,item)=>sum+(item.precio*item.quantity),0);
+        document.getElementById("cart-total-price").textContent=`$${total.toLocaleString("es-AR")}`;
+        const count=cart.reduce((sum,item)=>sum+item.quantity,0);
+        const cartCountEl=document.getElementById("cart-count");
+        cartCountEl.textContent=count;
+        cartCountEl.classList.toggle("visible",count>0);
+        localStorage.setItem("benditaNoblezaCart",JSON.stringify(cart));
+    }
+    
+    function renderCartItems(){
+        const container=document.getElementById("cart-items-container");
+        document.getElementById("cart-empty-msg").style.display=cart.length===0?"block":"none";
+        container.innerHTML=cart.map(item => {
+            const firstImage = getProductImages(item)[0] || "https://placehold.co/70x70/A084E8/FFF?text=BN";
+            const itemName = item.size ? `${item.nombre} (Talle: ${item.size})` : item.nombre;
+            return `<div class="cart-item" data-cart-id="${item.cartId}"><img src="${firstImage}" alt="${item.nombre}"><div class="cart-item-info"><h5>${itemName}</h5><p>$${item.precio.toLocaleString("es-AR")}</p></div><div class="cart-item-controls"><button class="quantity-btn" data-action="decrease">-</button><span>${item.quantity}</span><button class="quantity-btn" data-action="increase">+</button><button class="remove-item-btn"><i class="fas fa-trash"></i></button></div></div>`
+        }).join("");
+    }
+
+    function handleCartAction(e){
+        const itemEl = e.target.closest(".cart-item");
+        if (!itemEl) return;
+        
+        const cartId = itemEl.dataset.cartId;
+        
+        if (e.target.closest(".remove-item-btn")){
+            cart = cart.filter(i => i.cartId !== cartId);
+        } else {
+            const action = e.target.closest("button")?.dataset.action;
+            if(action) {
+                const item = cart.find(i => i.cartId === cartId);
+                if(item) {
+                    if (action === "increase") item.quantity++;
+                    else if (action === "decrease"){
+                        item.quantity--;
+                        if (item.quantity <= 0) cart = cart.filter(i => i.cartId !== cartId);
+                    }
+                }
+            }
+        }
+        updateCart();
+    }
+    
+    function handleCheckout(e){
+        e.preventDefault();
+        const name=document.getElementById("customer-name").value,address=document.getElementById("customer-address").value;
+        if(!name){alert("Por favor, ingresa tu nombre.");return}
+        let msg=`¡Hola Bendita Nobleza! ✨\n\nQuisiera encargar:\n\n${cart.map(i => {
+            const itemName = i.size ? `${i.nombre} (Talle: ${i.size})` : i.nombre;
+            return `*${itemName}* (x${i.quantity}) - $${(i.precio * i.quantity).toLocaleString("es-AR")}`
+        }).join("\n")}`;
+        const total=cart.reduce((s,i)=>s+i.precio*i.quantity,0);
+        msg+=`\n\n*TOTAL: $${total.toLocaleString("es-AR")}*\n\nMis datos:\nNombre: *${name}*`;
+        if(address)msg+=`\nDirección: *${address}*`;
+        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`,"_blank");
+        cart=[];
+        updateCart();
+        document.getElementById("checkout-modal").classList.remove("visible");
+        document.getElementById("cart-panel").classList.remove("open");
+    }
 
     </script>
 </body>
