@@ -24,13 +24,5 @@
       "tazasol.jpeg"
     ],
     "icono": "fas fa-heart"
-  },
-  {
-    "categoria": "mates",
-    "imagenes": [
-      "mate1.jpg",
-      "mate2.jpg"
-    ],
-    "icono": "fas fa-heart"
   }
 ]
