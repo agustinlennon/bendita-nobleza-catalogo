@@ -27,7 +27,9 @@
   },
   {
     "categoria": "Remeras infantiles",
-    "imagenes": [],
+    "imagenes": [
+      "flores1.png"
+    ],
     "icono": "fas fa-heart"
   }
 ]
