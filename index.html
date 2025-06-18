@@ -247,12 +247,40 @@
     }
     
     // ================== RENDERIZADO DE VISTAS ==================
+ // CAMBIO: Se añade la lógica para las flechas en ambos sliders.
     function renderMainSlider() {
         const sliderContainer = document.getElementById('main-slider');
-        sliderContainer.innerHTML = `<div class="slides-wrapper" style="width:100%; height:100%; position:relative;"> ${allSliders.map((s, i) => `<div class="slide ${i === 0 ? 'active' : ''}"><img src="${SLIDER_IMG_PATH}${s.imagen}" alt="Promoción ${i+1}"></div>`).join('')}</div> <div class="main-slider-dots">${allSliders.map((_, i) => `<span class="dot ${i === 0 ? 'active' : ''}" data-slide="${i}"></span>`).join('')}</div>`;
-        const slides = sliderContainer.querySelectorAll('.slide'), dots = sliderContainer.querySelectorAll('.dot'); let current = 0;
-        const goToSlide = (index) => { if (index < 0) index = slides.length - 1; if (index >= slides.length) index = 0; slides[current].classList.remove('active'); dots[current].classList.remove('active'); current = index; slides[current].classList.add('active'); dots[current].classList.add('active'); };
+        // Se añade el HTML para los botones de flecha
+        sliderContainer.innerHTML = `
+            <div class="slides-wrapper" style="width:100%; height:100%; position:relative;">
+                ${allSliders.map((s, i) => `<div class="slide ${i === 0 ? 'active' : ''}"><img src="${SLIDER_IMG_PATH}${s.imagen}" alt="Promoción ${i+1}"></div>`).join('')}
+            </div>
+            <button class="slider-arrow prev-arrow"><i class="fas fa-chevron-left"></i></button>
+            <button class="slider-arrow next-arrow"><i class="fas fa-chevron-right"></i></button>
+            <div class="main-slider-dots">${allSliders.map((_, i) => `<span class="dot ${i === 0 ? 'active' : ''}" data-slide="${i}"></span>`).join('')}</div>
+        `;
+        const slides = sliderContainer.querySelectorAll('.slide'),
+              dots = sliderContainer.querySelectorAll('.dot'),
+              prevBtn = sliderContainer.querySelector('.prev-arrow'),
+              nextBtn = sliderContainer.querySelector('.next-arrow');
+        let current = 0;
+        
+        const goToSlide = (index) => {
+            if (!slides.length) return;
+            if (index < 0) index = slides.length - 1;
+            if (index >= slides.length) index = 0;
+            slides[current].classList.remove('active');
+            dots[current].classList.remove('active');
+            current = index;
+            slides[current].classList.add('active');
+            dots[current].classList.add('active');
+        };
+        
         dots.forEach(dot => dot.addEventListener('click', () => goToSlide(Number(dot.dataset.slide))));
+        // Se añaden los listeners a las flechas
+        prevBtn.addEventListener('click', () => goToSlide(current - 1));
+        nextBtn.addEventListener('click', () => goToSlide(current + 1));
+
         if(mainSliderInterval) clearInterval(mainSliderInterval);
         mainSliderInterval = setInterval(() => goToSlide(current + 1), 5000);
         makeSliderDraggable(sliderContainer, () => goToSlide(current + 1), () => goToSlide(current - 1));
