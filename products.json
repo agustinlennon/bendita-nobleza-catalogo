@@ -492,5 +492,18 @@
     "img2": "",
     "img3": "",
     "keywords": ""
+  },
+  {
+    "id": 40,
+    "categoria": "Remeras Infantiles",
+    "tipo": "Infantil",
+    "nombre": "",
+    "descripcion": "",
+    "precio": 15000,
+    "talles": "",
+    "img1": "buenpastor1.png",
+    "img2": "",
+    "img3": "",
+    "keywords": ""
   }
 ]
