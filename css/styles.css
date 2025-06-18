@@ -65,7 +65,7 @@ nav {
 /* --- SLIDER DE PORTADA --- */
 .slider-container {
     width: 100%;
-    height: calc(600vh - var(--nav-height)); /* Aproximadamente 1/3 de la altura de la pantalla */
+    height: calc(450vh - var(--nav-height)); /* Aproximadamente 1/3 de la altura de la pantalla */
     max-height: 450px; /* Límite para pantallas muy altas */
     min-height: 200px; /* Límite para que no sea demasiado pequeño */
     position: relative;
