@@ -499,11 +499,24 @@
     "tipo": "Infantil",
     "nombre": "Modelo Jesus Niño / Niña",
     "descripcion": "",
-    "precio": 15000,
+    "precio": 17500,
     "talles": "4, 6, 8, 10, 12, 14, 16",
     "img1": "buenpastor1.png",
-    "img2": "",
+    "img2": "buenpastor2.png",
     "img3": "",
+    "keywords": ""
+  },
+  {
+    "id": 41,
+    "categoria": "Remeras Infantiles",
+    "tipo": "Infantil",
+    "nombre": "Modelo Acutis Niño/Niña ",
+    "descripcion": "",
+    "precio": 17500,
+    "talles": "4, 6, 8, 10, 12, 14, 17",
+    "img1": "Acutis.png",
+    "img2": "acutis1.png",
+    "img3": "acutis2.png",
     "keywords": ""
   }
 ]
