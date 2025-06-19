@@ -590,10 +590,8 @@
         document.getElementById("close-cart-btn").addEventListener("click",()=>document.getElementById("cart-panel").classList.remove("open"));
         document.getElementById("lightbox-modal").addEventListener("click",e=>{if(e.target===document.getElementById("lightbox-modal")||e.target===document.querySelector(".lightbox-close"))document.getElementById("lightbox-modal").classList.remove("visible")});
         
- 
-
-                
-        // CAMBIO: La lógica ahora comprueba si la propiedad 'talles' existe y tiene contenido, sin importar la categoría.
+      
+        // CAMBIO: La lógica ahora comprueba si la propiedad 'talles' o 'Talles' existe y tiene contenido.
         document.body.addEventListener("click",e=>{
             const btn = e.target.closest(".add-to-cart-btn");
             if (btn) {
@@ -603,12 +601,16 @@
                 const product = allProducts.find(p => p.id === productId);
                 const container = btn.closest('.product-card, .product-layout');
 
-                const availableSizes = product ? parseSizes(product.talles) : [];
+                if (product && container) {
+                    // Busca la propiedad de talles sin importar si es 'talles' o 'Talles' (mayúscula/minúscula).
+                    const tallesData = product.talles || product.Talles;
+                    const availableSizes = parseSizes(tallesData);
 
-                if (product && container && availableSizes.length > 0) {
-                    showSizeSelector(product, container);
-                } else if (product) {
-                    addToCart(product.id, null);
+                    if (availableSizes.length > 0) {
+                        showSizeSelector(product, availableSizes, container);
+                    } else {
+                        addToCart(product.id, null);
+                    }
                 }
             }
         });
