@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bendita Nobleza - Artículos Religiosos</title>
-    <!-- CAMBIO: Se ajusta el SVG para que parezca una cruz religiosa -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path stroke-linecap='round' stroke='%23A084E8' stroke-width='12' d='M50,10 L50,90 M25,40 L75,40' /></svg>" type="image/svg+xml">
-    <!-- FIN DEL CAMBIO -->
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -116,24 +114,18 @@
     let mainSliderInterval;
 
 
- // ================== FUNCIÓN PARA FORZAR LA DECODIFICACIÓN UTF-8 ==================
     async function fetchAndDecodeJSON(path) {
         const response = await fetch(path);
-        // Leemos la respuesta como un buffer de datos binarios
         const buffer = await response.arrayBuffer();
-        // Usamos TextDecoder para forzar la interpretación como UTF-8
         const decoder = new TextDecoder('utf-8');
         const text = decoder.decode(buffer);
-        // Finalmente, convertimos el texto decodificado a JSON
         return JSON.parse(text);
     }
-    // ================== FIN DEL CAMBIO ==================
 
 
     // ================== INICIO DE LA APLICACIÓN ==================
     document.addEventListener('DOMContentLoaded', async () => {
         try {
-            // Se utiliza la nueva función fetchAndDecodeJSON para cargar todos los archivos JSON.
             [allProducts, allCatalogos, allSliders] = await Promise.all([
                 fetchAndDecodeJSON(PRODUCTS_JSON_PATH),
                 fetchAndDecodeJSON(CATALOGO_JSON_PATH),
@@ -205,13 +197,11 @@
     function setupRouting() {
         window.addEventListener('hashchange', handleRouteChange);
         document.body.addEventListener('click', e => {
-            // CAMBIO: Aseguramos que el click en el botón de agregar no propague al enlace padre.
             const btn = e.target.closest(".add-to-cart-btn");
             if (btn) {
                 e.preventDefault();
                 return;
             }
-            // FIN DEL CAMBIO
             const link = e.target.closest('.page-link');
             if (link) { e.preventDefault(); const targetHash = new URL(link.href, window.location.href).hash; if (window.location.hash !== targetHash) window.location.hash = targetHash; else handleRouteChange(); }
         });
@@ -250,10 +240,8 @@
     }
     
     // ================== RENDERIZADO DE VISTAS ==================
- // CAMBIO: Se añade la lógica para las flechas en ambos sliders.
     function renderMainSlider() {
         const sliderContainer = document.getElementById('main-slider');
-        // Se añade el HTML para los botones de flecha
         sliderContainer.innerHTML = `
             <div class="slides-wrapper" style="width:100%; height:100%; position:relative;">
                 ${allSliders.map((s, i) => `<div class="slide ${i === 0 ? 'active' : ''}"><img src="${SLIDER_IMG_PATH}${s.imagen}" alt="Promoción ${i+1}"></div>`).join('')}
@@ -280,7 +268,6 @@
         };
         
         dots.forEach(dot => dot.addEventListener('click', () => goToSlide(Number(dot.dataset.slide))));
-        // Se añaden los listeners a las flechas
         prevBtn.addEventListener('click', () => goToSlide(current - 1));
         nextBtn.addEventListener('click', () => goToSlide(current + 1));
 
@@ -295,7 +282,8 @@
             allCatalogos.map(cat => {
                 const slidesHTML = cat.imagenes.map((img, idx) => `<div class="cat-slide ${idx === 0 ? 'active' : ''}"><img src="${PRODUCT_IMG_PATH}${img}" alt="${cat.categoria}"></div>`).join('');
                 const dotsHTML = cat.imagenes.map((_, idx) => `<span class="cat-dot ${idx === 0 ? 'active' : ''}" data-slide="${idx}"></span>`).join('');
-                return `<a href="#catalog/${cat.categoria}" class="category-card page-link"><div class="category-slider" id="slider-${cat.categoria.replace(/\s+/g, '-')}">${slidesHTML}<div class="cat-slider-dots">${dotsHTML}</div></div><div class="category-card-title">${cat.categoria}</div></a>`;
+                const arrowsHTML = `<button class="slider-arrow prev-arrow"><i class="fas fa-chevron-left"></i></button><button class="slider-arrow next-arrow"><i class="fas fa-chevron-right"></i></button>`;
+                return `<a href="#catalog/${cat.categoria}" class="category-card page-link"><div class="category-slider" id="slider-${cat.categoria.replace(/\s+/g, '-')}">${slidesHTML}${arrowsHTML}<div class="cat-slider-dots">${dotsHTML}</div></div><div class="category-card-title">${cat.categoria}</div></a>`;
             }).join('')
         }</div>`;
         allCatalogos.forEach(cat => {
@@ -308,14 +296,30 @@
     function setupCategorySlider(sliderElement) {
         const slides = sliderElement.querySelectorAll('.cat-slide');
         const dots = sliderElement.querySelectorAll('.cat-dot');
+        const prevBtn = sliderElement.querySelector('.prev-arrow');
+        const nextBtn = sliderElement.querySelector('.next-arrow');
+
         if (slides.length <= 1) {
             if(dots.length > 0) dots[0].parentElement.style.display = 'none';
+            if(prevBtn) prevBtn.style.display = 'none';
+            if(nextBtn) nextBtn.style.display = 'none';
             return;
         }
         let current = 0;
         let slideInterval = null;
-        const goToSlide = (index) => { slides[current].classList.remove('active'); dots[current].classList.remove('active'); current = (index + slides.length) % slides.length; slides[current].classList.add('active'); dots[current].classList.add('active'); };
+        const goToSlide = (index) => {
+            slides[current].classList.remove('active');
+            dots[current].classList.remove('active');
+            current = (index + slides.length) % slides.length;
+            slides[current].classList.add('active');
+            dots[current].classList.add('active');
+        };
+
         dots.forEach((dot, index) => { dot.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); goToSlide(index); clearInterval(slideInterval); }); });
+        
+        prevBtn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); goToSlide(current - 1); clearInterval(slideInterval); });
+        nextBtn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); goToSlide(current + 1); clearInterval(slideInterval); });
+
         const startInterval = () => { clearInterval(slideInterval); slideInterval = setInterval(() => goToSlide(current + 1), 4000); };
         makeSliderDraggable(sliderElement, () => { goToSlide(current + 1); clearInterval(slideInterval); }, () => { goToSlide(current - 1); clearInterval(slideInterval); });
         sliderElement.closest('.page-link').addEventListener('mouseenter', () => clearInterval(slideInterval));
@@ -373,7 +377,6 @@
         document.getElementById('products-grid').innerHTML = products.length > 0 ? products.map(renderProductCard).join('') : '<p>No se encontraron productos.</p>';
     }
     
-    // CAMBIO: Se reestructura la tarjeta de producto para que el botón no esté dentro del enlace.
     function renderProductCard(p) {
         const firstImage = getProductImages(p)[0] || 'https://placehold.co/250x250/A084E8/FFF?text=BN';
         return `
@@ -393,7 +396,6 @@
                 </div>
             </div>`;
     }
-    // FIN DEL CAMBIO
     
     function renderRelatedProductCard(p) {
         const imgs = getProductImages(p);
@@ -496,52 +498,36 @@
     function populateCategoriesDropdown() {
         document.getElementById('category-dropdown').innerHTML = allCatalogos.map(cat => `<li><a href="#catalog/${cat.categoria}" class="page-link"><i class="${cat.icono || ''}"></i> ${cat.categoria.charAt(0).toUpperCase() + cat.categoria.slice(1)}</a></li>`).join('');
     }
-    
-    // ================== LÓGICA DEL SELECTOR DE TALLES ==================
- // ================== CAMBIO: NUEVA FUNCIÓN PARA PROCESAR LOS TALLES DE FORMA ROBUSTA ==================
+
+    // ================== CAMBIO: LÓGICA DE TALLES MEJORADA Y CORREGIDA ==================
     function parseSizes(tallesData) {
-        if (!tallesData) {
-            return [];
-        }
-        // Caso 1: Ya es un array. No hacer nada.
-        if (Array.isArray(tallesData)) {
-            return tallesData;
-        }
-        // Caso 2: Es un string. Intentar procesarlo.
+        if (!tallesData) return [];
+        if (Array.isArray(tallesData)) return tallesData;
         if (typeof tallesData === 'string') {
-            // Sub-caso 2a: Es una cadena de texto que parece un array JSON (ej: "[\"S\",\"M\"]").
             if (tallesData.startsWith('[') && tallesData.endsWith(']')) {
-                try {
-                    return JSON.parse(tallesData);
-                } catch (e) {
-                    // Si falla el parseo, se intentará el siguiente método.
-                }
+                try { return JSON.parse(tallesData); } catch (e) { /* Sigue al siguiente método */ }
             }
-            // Sub-caso 2b: Es una cadena separada por comas (ej: "S, M, L").
-            return tallesData.split(',').map(t => t.trim()).filter(t => t); // filter(t => t) elimina elementos vacíos.
+            return tallesData.split(',').map(t => t.trim()).filter(Boolean);
         }
-        // Si no es ni array ni string, devolver una lista vacía para evitar errores.
         return [];
     }
-    // ================== FIN DEL CAMBIO ==================
     
-    // ================== LÓGICA DEL SELECTOR DE TALLES (ACTUALIZADA) ==================
-    function showSizeSelector(product, targetElement) {
+    function showSizeSelector(product, availableSizes, targetElement) {
         const existingSelector = document.querySelector('.size-selector-overlay');
         if (existingSelector) existingSelector.remove();
 
-        // CAMBIO: Se utiliza la nueva función 'parseSizes' para obtener la lista de talles.
-        const availableSizes = parseSizes(product.talles);
-        // FIN DEL CAMBIO
-
-        if (availableSizes.length === 0) {
-            console.warn("Producto de indumentaria sin talles definidos:", product.id);
-            addToCart(product.id, 'Talle Único'); 
+        if (!availableSizes || availableSizes.length === 0) {
+            console.warn("Se intentó mostrar el selector de talles, pero no hay talles disponibles para el producto:", product.id);
             return;
         }
 
-        const sizeOrder = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
-        const sortedSizes = availableSizes.sort((a, b) => {
+        const isNumeric = availableSizes.every(size => !isNaN(parseFloat(size)) && isFinite(size));
+        
+        const sortedSizes = [...availableSizes].sort((a, b) => {
+            if (isNumeric) {
+                return parseFloat(a) - parseFloat(b);
+            }
+            const sizeOrder = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
             const indexA = sizeOrder.indexOf(a.toUpperCase());
             const indexB = sizeOrder.indexOf(b.toUpperCase());
             if (indexA !== -1 && indexB !== -1) return indexA - indexB;
@@ -590,8 +576,6 @@
         document.getElementById("close-cart-btn").addEventListener("click",()=>document.getElementById("cart-panel").classList.remove("open"));
         document.getElementById("lightbox-modal").addEventListener("click",e=>{if(e.target===document.getElementById("lightbox-modal")||e.target===document.querySelector(".lightbox-close"))document.getElementById("lightbox-modal").classList.remove("visible")});
         
-      
-        // CAMBIO: La lógica ahora comprueba si la propiedad 'talles' o 'Talles' existe y tiene contenido.
         document.body.addEventListener("click",e=>{
             const btn = e.target.closest(".add-to-cart-btn");
             if (btn) {
@@ -602,8 +586,8 @@
                 const container = btn.closest('.product-card, .product-layout');
 
                 if (product && container) {
-                    // Busca la propiedad de talles sin importar si es 'talles' o 'Talles' (mayúscula/minúscula).
-                    const tallesData = product.talles || product.Talles;
+                    // CAMBIO: Lógica insensible a mayúsculas/minúsculas para encontrar la columna de talles.
+                    const tallesData = product.talles || product.Talles || product.talle || product.Talle;
                     const availableSizes = parseSizes(tallesData);
 
                     if (availableSizes.length > 0) {
@@ -611,10 +595,10 @@
                     } else {
                         addToCart(product.id, null);
                     }
+                    // FIN DEL CAMBIO
                 }
             }
         });
-        // FIN DEL CAMBIO
 
         document.getElementById("cart-items-container").addEventListener("click",handleCartAction);
         document.getElementById("checkout-btn").addEventListener("click",()=>{if(cart.length>0)document.getElementById("checkout-modal").classList.add("visible");else alert("Tu carrito está vacío.")});
