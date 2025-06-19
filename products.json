@@ -518,5 +518,31 @@
     "img2": "acutis1.png",
     "img3": "acutis2.png",
     "keywords": ""
+  },
+  {
+    "id": 42,
+    "categoria": "Remeras Infantiles",
+    "tipo": "Infantil",
+    "nombre": "Modelo Corazón de Jesus",
+    "descripcion": "",
+    "precio": 17500,
+    "talles": "4, 6, 8, 10, 12, 14, 18",
+    "img1": "Corazondejesus.png",
+    "img2": "",
+    "img3": "",
+    "keywords": ""
+  },
+  {
+    "id": 43,
+    "categoria": "Remeras Infantiles",
+    "tipo": "Infantil",
+    "nombre": "Modelo Marianista",
+    "descripcion": "",
+    "precio": 17500,
+    "talles": "4, 6, 8, 10, 12, 14, 19",
+    "img1": "marianista.png",
+    "img2": "",
+    "img3": "",
+    "keywords": ""
   }
 ]
