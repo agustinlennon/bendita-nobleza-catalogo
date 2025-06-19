@@ -590,23 +590,29 @@
         document.getElementById("close-cart-btn").addEventListener("click",()=>document.getElementById("cart-panel").classList.remove("open"));
         document.getElementById("lightbox-modal").addEventListener("click",e=>{if(e.target===document.getElementById("lightbox-modal")||e.target===document.querySelector(".lightbox-close"))document.getElementById("lightbox-modal").classList.remove("visible")});
         
+ 
+
+                
+        // CAMBIO: La lógica ahora comprueba si la propiedad 'talles' existe y tiene contenido, sin importar la categoría.
         document.body.addEventListener("click",e=>{
             const btn = e.target.closest(".add-to-cart-btn");
             if (btn) {
-                // Prevenimos cualquier acción por defecto (como seguir un enlace)
                 e.preventDefault();
                 
                 const productId = parseInt(btn.dataset.id);
                 const product = allProducts.find(p => p.id === productId);
                 const container = btn.closest('.product-card, .product-layout');
 
-                if (product && container && product.categoria.toLowerCase() === 'indumentaria' && product.talles && product.talles.length > 0) {
+                const availableSizes = product ? parseSizes(product.talles) : [];
+
+                if (product && container && availableSizes.length > 0) {
                     showSizeSelector(product, container);
                 } else if (product) {
                     addToCart(product.id, null);
                 }
             }
         });
+        // FIN DEL CAMBIO
 
         document.getElementById("cart-items-container").addEventListener("click",handleCartAction);
         document.getElementById("checkout-btn").addEventListener("click",()=>{if(cart.length>0)document.getElementById("checkout-modal").classList.add("visible");else alert("Tu carrito está vacío.")});
