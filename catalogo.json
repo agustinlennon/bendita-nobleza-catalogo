@@ -28,7 +28,9 @@
   {
     "categoria": "Remeras infantiles",
     "imagenes": [
-      "buenpastor1.png"
+      "buenpastor1.png",
+      "acutis1.png",
+      "marianista.png"
     ],
     "icono": "fas fa-heart"
   }
