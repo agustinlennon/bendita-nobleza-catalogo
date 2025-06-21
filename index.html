@@ -21,7 +21,15 @@
         <a href="#home" class="logo page-link">Bendita Nobleza</a>
         <div class="nav-center">
             <ul class="nav-links">
-                <li class="nav-item"><a href="#home" class="page-link">Inicio</a></li>
+                    <!-- CAMBIO: Se convierte Inicio en un dropdown y se actualizan los enlaces -->
+                <li class="nav-item">
+                    <a href="#home" class="page-link">Inicio</a>
+                    <ul class="dropdown">
+                        <li><a href="#quienes-somos" class="page-link"><i class="fas fa-users"></i> Quiénes Somos</a></li>
+                        <li><a href="#faq" class="page-link"><i class="fas fa-question-circle"></i> Preguntas Frecuentes</a></li>
+                    </ul>
+                </li>
+                <!-- FIN DEL CAMBIO -->
                 <li class="nav-item">
                    <a href="#catalog" class="page-link">Catálogo</a>
                     <ul class="dropdown" id="category-dropdown"></ul>
@@ -74,12 +82,78 @@
             </div>
         </section>
         <section id="product-detail-page" class="page"></section>
+         <!-- CAMBIO: Nueva sección para la página "Quiénes Somos" -->
+        <section id="about-page" class="page">
+            <div class="about-section">
+                <h2>✨ Quiénes Somos</h2>
+                <div class="about-content">
+                    <p><strong>Bendita Nobleza</strong> nació de un profundo amor por la fe y el deseo de compartir mensajes de esperanza y devoción a través de objetos cotidianos.</p>
+                    <p>Somos un emprendimiento familiar dedicado a crear productos con diseños únicos y llenos de significado. Cada artículo, desde un almohadón hasta una taza, está pensado y elaborado con cuidado, buscando ser un pequeño recordatorio de la fe que nos une y nos da fuerza en el día a día.</p>
+                    <p>Creemos en el poder de los detalles y en la importancia de rodearnos de belleza e inspiración. Nuestra misión es llevar un pedacito de esa inspiración a tu hogar, para que cada rincón y cada momento tengan un toque de bendita nobleza.</p>
+                    <p>¡Gracias por ser parte de nuestra comunidad!</p>
+                </div>
+            </div>
+        </section>
+        <!-- FIN DEL CAMBIO -->
+
+        <section id="faq-page" class="page">
+            <div class="faq-section">
+                <h2>❓ Preguntas Frecuentes</h2>
+
+                <div class="faq-item" id="faq-cambios">
+                    <h3>🔁 ¿Se pueden realizar cambios?</h3>
+                    <p>Sí, <strong>solo en caso de fallas de fábrica</strong>.</p>
+                    <ul>
+                        <li>El producto debe estar <strong>sin uso</strong>, con <strong>embalaje y etiquetas</strong>.</li>
+                        <li>Cambio por el <strong>mismo artículo</strong> o uno similar si no hay stock.</li>
+                        <li><strong>Cambios por talle:</strong> sujetos a disponibilidad.</li>
+                    </ul>
+                    <p><strong>Importante:</strong> el envío corre por cuenta del comprador. Coordiná previamente con nosotros. Podés devolver en showroom o por Correo Argentino.</p>
+                    <p><strong>🚫 No tienen cambio:</strong> productos en promoción (solo por falla), artículos en oferta si el original no fue a precio completo, y sección "Segunda Selección".</p>
+                </div>
+
+                <div class="faq-item" id="faq-pago">
+                    <h3>💳 ¿Cuáles son las formas de pago?</h3>
+                    <p><strong>Descuentos especiales</strong> para pagos en efectivo o transferencia:</p>
+                    <ul>
+                        <li>Pagos en efectivo (en showroom)</li>
+                        <li>Transferencia bancaria o depósito</li>
+                    </ul>
+                </div>
+
+                <div class="faq-item" id="faq-tiempo">
+                    <h3>⏳ ¿Cuánto tiempo tengo para abonar mi pedido?</h3>
+                    <p>Las <strong>reservas caducan a la medianoche</strong> del mismo día en que se realizan.</p>
+                </div>
+
+                <div class="faq-item" id="faq-envios">
+                    <h3>🚚 ¿Realizan envíos?</h3>
+                    <p>Sí, a todo el país. El costo se abona con la compra.</p>
+                    <ul>
+                        <li><strong>Correo Argentino</strong> (tarifas según peso y distancia)</li>
+                        <li>❌ No enviamos por OCA ni Andreani</li>
+                    </ul>
+                </div>
+
+                <div class="faq-item" id="faq-mensajeria">
+                    <h3>🛵 ¿Tienen mensajería?</h3>
+                    <p>Sí, en CABA y algunas zonas de GBA. El costo se abona <strong>previamente</strong> y corre por cuenta del comprador.</p>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- FOOTER Y MODALES -->
     <footer class="site-footer">
         <div class="footer-container">
             <div class="footer-column"><h4>Bendita Nobleza</h4><p>Conectando tu fe con diseños únicos y llenos de amor.</p></div>
+               <!-- CAMBIO: Se añade enlace a "Quiénes Somos" en el footer -->
+            <div class="footer-column">
+                <h4>Información</h4>
+                <p><a href="#quienes-somos" class="page-link">Quiénes Somos</a></p>
+                <p><a href="#faq" class="page-link">Preguntas Frecuentes</a></p>
+            </div>
+            <!-- FIN DEL CAMBIO -->
             <div class="footer-column"><h4>Contacto</h4><p><i class="fas fa-phone"></i> <a href="tel:+5491136126126">+54 9 11 3612-6126</a></p><p><i class="fas fa-envelope"></i> <a href="mailto:benditanobleza@gmail.com">benditanobleza@gmail.com</a></p></div>
             <div class="footer-column"><h4>Seguinos</h4>
                 <div class="social-links">
@@ -233,6 +307,14 @@
                 document.getElementById('product-detail-page').classList.add('active');
                 renderProductDetailPage(parseInt(param));
                 break;
+            // CAMBIO: Se añade el caso para la nueva página de Quiénes Somos y se corrige el de FAQ
+            case 'faq':
+                document.getElementById('faq-page').classList.add('active');
+                break;
+            case 'quienes-somos':
+                document.getElementById('about-page').classList.add('active');
+                break;
+            // FIN DEL CAMBIO
             default:
                 window.location.hash = '#home';
         }
