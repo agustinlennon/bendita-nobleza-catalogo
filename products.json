@@ -9,7 +9,7 @@
     "talles": "S,M,L,XL,XXL",
     "img1": "nazareth1.png",
     "img2": "nazareth2.png",
-    "img3": "",
+    "img3": "Algodon-Medidas.png",
     "keywords": ""
   },
   {
@@ -22,7 +22,7 @@
     "talles": "S,M,L,XL,XXL",
     "img1": "Gala1.png",
     "img2": "Gala2.png",
-    "img3": "",
+    "img3": "Modal-Medidas.png",
     "keywords": ""
   },
   {
@@ -34,7 +34,7 @@
     "precio": 17500,
     "talles": "S,M,L,XL,XXL",
     "img1": "agus.jpeg",
-    "img2": "",
+    "img2": "Algodon-Medidas.png",
     "img3": "",
     "keywords": ""
   },
@@ -47,7 +47,7 @@
     "precio": 17500,
     "talles": "S,M,L,XL,XXL",
     "img1": "Barroco.jpeg",
-    "img2": "",
+    "img2": "Algodon-Medidas.png",
     "img3": "",
     "keywords": ""
   },
@@ -61,7 +61,7 @@
     "talles": "S,M,L,XL,XXL",
     "img1": "hec1.jpeg",
     "img2": "hec2.jpeg",
-    "img3": "",
+    "img3": "Modal-Medidas.png",
     "keywords": ""
   },
   {
@@ -74,7 +74,7 @@
     "talles": "S,M,L,XL,XXL",
     "img1": "jesus1.jpeg",
     "img2": "jesus2.jpeg",
-    "img3": "",
+    "img3": "Algodon-Medidas.png",
     "keywords": ""
   },
   {
@@ -86,7 +86,7 @@
     "precio": 14000,
     "talles": "S,M,L,XL,XXL",
     "img1": "Francisco.jpeg",
-    "img2": "",
+    "img2": "Modal-Medidas.png",
     "img3": "",
     "keywords": ""
   },
@@ -99,7 +99,7 @@
     "precio": 17500,
     "talles": "S,M,L,XL,XXL",
     "img1": "Sixtina.jpeg",
-    "img2": "",
+    "img2": "Algodon-Medidas.png",
     "img3": "",
     "keywords": ""
   },
@@ -112,7 +112,7 @@
     "precio": 17500,
     "talles": "S,M,L,XL,XXL",
     "img1": "Arcangel Miguel.jpeg",
-    "img2": "",
+    "img2": "Algodon-Medidas.png",
     "img3": "",
     "keywords": ""
   },
@@ -126,7 +126,7 @@
     "talles": "S,M,L,XL,XXL",
     "img1": "Milagrosa1.jpeg",
     "img2": "Milagrosa2.jpeg",
-    "img3": "",
+    "img3": "Modal-Medidas.png",
     "keywords": ""
   },
   {
@@ -138,7 +138,7 @@
     "precio": 14000,
     "talles": "S,M,L,XL,XXL",
     "img1": "Marilu.jpeg",
-    "img2": "",
+    "img2": "Modal-Medidas.png",
     "img3": "",
     "keywords": ""
   },
@@ -151,7 +151,7 @@
     "precio": 14000,
     "talles": "S,M,L,XL,XXL",
     "img1": "Maria.jpeg",
-    "img2": "",
+    "img2": "Modal-Medidas.png",
     "img3": "",
     "keywords": ""
   },
@@ -165,7 +165,7 @@
     "talles": "S,M,L,XL,XXL",
     "img1": "Isaias1.png",
     "img2": "Isaias2.png",
-    "img3": "",
+    "img3": "Modal-Medidas.png",
     "keywords": ""
   },
   {
@@ -178,7 +178,7 @@
     "talles": "S,M,L,XL,XXL",
     "img1": "Medallamilagrosa1.png",
     "img2": "medallamilagrosa2.png",
-    "img3": "medallamilagrosa3.png",
+    "img3": "Modal-Medidas.png",
     "keywords": ""
   },
   {
@@ -191,7 +191,7 @@
     "talles": "S,M,L,XL,XXL",
     "img1": "josue1.png",
     "img2": "josue2.png",
-    "img3": "",
+    "img3": "Modal-Medidas.png",
     "keywords": ""
   },
   {
@@ -204,7 +204,7 @@
     "talles": "S,M,L,XL,XXL",
     "img1": "Flores1.png",
     "img2": "flores2.png",
-    "img3": "flores3.png",
+    "img3": "Modal-Medidas.png",
     "keywords": ""
   },
   {
@@ -217,7 +217,7 @@
     "talles": "S,M,L,XL,XXL",
     "img1": "Filipenses1.png",
     "img2": "Filipenses2.png",
-    "img3": "Filipenses3.png",
+    "img3": "Modal-Medidas.png",
     "keywords": ""
   },
   {
@@ -230,7 +230,7 @@
     "talles": "S,M,L,XL,XXL",
     "img1": "Hebreos13_6.png",
     "img2": "Hebreos13:62.png",
-    "img3": "",
+    "img3": "Algodon-Medidas.png",
     "keywords": ""
   },
   {
@@ -242,7 +242,7 @@
     "precio": 14000,
     "talles": "S,M,L,XL,XXL",
     "img1": "madre.jpg",
-    "img2": "",
+    "img2": "Modal-Medidas.png",
     "img3": "",
     "keywords": ""
   },
@@ -255,7 +255,7 @@
     "precio": 14000,
     "talles": "S,M,L,XL,XXL",
     "img1": "urku1.png",
-    "img2": "urku2.png",
+    "img2": "Modal-Medidas.png",
     "img3": "urku3.jpg",
     "keywords": ""
   },
@@ -503,7 +503,7 @@
     "talles": "4, 6, 8, 10, 12, 14, 16",
     "img1": "buenpastor1.png",
     "img2": "buenpastor2.png",
-    "img3": "",
+    "img3": "Remeras-infantiles-Medidas.png",
     "keywords": ""
   },
   {
@@ -516,7 +516,7 @@
     "talles": "4, 6, 8, 10, 12, 14, 16",
     "img1": "acutis.png",
     "img2": "acutis1.png",
-    "img3": "acutis2.png",
+    "img3": "Remeras-infantiles-Medidas.png",
     "keywords": ""
   },
   {
@@ -528,7 +528,7 @@
     "precio": 17500,
     "talles": "4, 6, 8, 10, 12, 14, 16",
     "img1": "Corazondejesus.png",
-    "img2": "",
+    "img2": "Remeras-infantiles-Medidas.png",
     "img3": "",
     "keywords": ""
   },
@@ -541,7 +541,7 @@
     "precio": 17500,
     "talles": "4, 6, 8, 10, 12, 14, 16",
     "img1": "marianista.png",
-    "img2": "",
+    "img2": "Remeras-infantiles-Medidas.png",
     "img3": "",
     "keywords": ""
   }
