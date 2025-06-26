@@ -544,5 +544,18 @@
     "img2": "Remeras-infantiles-Medidas.png",
     "img3": "",
     "keywords": ""
+  },
+  {
+    "id": 44,
+    "categoria": "indumentaria",
+    "tipo": "modal",
+    "nombre": "Modelo Salmo233",
+    "descripcion": "Remera de modal talles S al XXL",
+    "precio": 14000,
+    "talles": "",
+    "img1": "salmo2331.png",
+    "img2": "salmo2332.png",
+    "img3": "Modal-Medidas.png",
+    "keywords": ""
   }
 ]
