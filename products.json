@@ -557,5 +557,18 @@
     "img2": "salmo2332.png",
     "img3": "Modal-Medidas.png",
     "keywords": ""
+  },
+  {
+    "id": 45,
+    "categoria": "indumentaria",
+    "tipo": "Modal",
+    "nombre": "Modelo YHWH",
+    "descripcion": "Remera Modelo Unisex talles S al XXL",
+    "precio": 14000,
+    "talles": "",
+    "img1": "yhwh1.png",
+    "img2": "yhwh2.png",
+    "img3": "Modal-Medidas.png",
+    "keywords": ""
   }
 ]
